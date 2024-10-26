@@ -27,8 +27,9 @@ CREATE TABLE IF NOT EXISTS juegos(
     nombre						VARCHAR(50) NOT NULL,
     id_plataforma  				INTEGER,
     precio                      DECIMAL(10, 2),
-    descripcion TEXT,
-    imagen LONGBLOB,
+    descripcion                 TEXT,
+    imagen                      LONGBLOB,
+    stock                       INTEGER,
     PRIMARY KEY(id_juego),
     FOREIGN KEY(id_plataforma) REFERENCES plataformas(id_plataforma)
 )DEFAULT CHARACTER SET UTF8MB4;
@@ -57,7 +58,7 @@ CREATE TABLE IF NOT EXISTS juegos_ventas(
 )DEFAULT CHARACTER SET UTF8MB4;
 
 /*
-    INSERT INTO plataformas(nombre,imagen) values ('switch', LOAD_FILE('ruta'));
+    INSERT INTO plataformas(nombre,imagen) values ('Nintendo', LOAD_FILE('ruta'));
     INSERT INTO plataformas(nombre,imagen) values ('PlayStation', LOAD_FILE('ruta'));
     INSERT INTO plataformas(nombre,imagen) values ('XBox', LOAD_FILE('ruta'));
 */
