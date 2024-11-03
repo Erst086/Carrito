@@ -3,20 +3,27 @@
   "version": "1.0.0",
   "description": "Nodejs Express Mysql",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./index.js",
+    "server": "nodemon index.js"
   },
   "keywords": [
     "Nodejs",
     "Express",
     "Mysql"
   ],
-  "author": "equipo10",
+  "author": "pyPlas",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "express-session": "^1.18.1",
-    "pug": "^3.0.3"
+    "express-validator": "^7.2.0",
+    "jquery": "^3.7.1",
+    "mariadb": "^3.4.0",
+    "pug": "^3.0.3",
+    "sequelize": "^6.37.5"
   },
   "devDependencies": {
     "nodemon": "^3.1.7"
