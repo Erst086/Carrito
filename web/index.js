@@ -23,6 +23,7 @@ app.set("views", "./views");
 app.use(express.static("public"));
 //routing
 app.use("/", inicio);
+
 //definir puerto 
 const port = 2800;
 app.listen(port, ()=>{
