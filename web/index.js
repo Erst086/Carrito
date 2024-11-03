@@ -1,6 +1,10 @@
 import express from "express";
 import session from "express-session";
-import inicio from "./routes/inicioRouter.js";
+import routerInicio from "./routes/inicioRouter.js"
+//import routerLogIn from "./routes/logInRouter.js";
+//import inicio from "./routes/signInRouter.js";
+//import routerUser from "./routes/userRouter.js";
+//import routerAdmin from "./routes/adminRouter.js";
 import db from "./config/db.js";
 //crea la aplicacion
 const app = express();
@@ -22,8 +26,7 @@ app.set("views", "./views");
 //carpeta publica
 app.use(express.static("public"));
 //routing
-app.use("/", inicio);
-
+app.use("/", routerInicio);
 //definir puerto 
 const port = 2800;
 app.listen(port, ()=>{

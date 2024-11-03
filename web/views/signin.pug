@@ -11,7 +11,7 @@ html(lang="es")
         h1.text-center=pagina
                 div(class="row justify-content-center")
                     div(class="col-md-5")
-                    form(class="space-y-5" action="/signIn" method="POST" noValidate)
+                    form(class="space-y-5" action="/inicio" method="POST" noValidate)
                         br
                         br
                         div(class="mb-1")
@@ -19,3 +19,4 @@ html(lang="es")
                             input#usuar(class="form-control" type="text" placeHolder="Usuario" name="nombre")
                         div(class="mb-1")
                             button(type="submit" class="btn btn-primary col-auto") Enviar
+                    a(href="/back") back

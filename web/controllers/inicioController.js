@@ -8,26 +8,37 @@ const inicio = (req, res)=>{
         pagina: "Bienvenido",
     });
 }
-const signInLink = (req, res)=>{
-    res.render("signin",{
-        pagina: "Sign In"
+const logInLink = (req, res)=>{
+    res.render('login');
+    return res.render("login",{
+        pagina: "login",
     });
 }
-const logInLink = (req, res)=>{
-    res.render("login",{
-        pagina: "Log In"
+const signInLink = (req, res)=>{
+    res.render('signin');
+    return res.render("signin",{
+        pagina: "signin",
     });
 }
 const logIn = (req, res)=>{
-    res.render("inicio",{
-        pagina: "se logueo"
+    res.render('/user/inicioUser');
+    return res.render('/user/inicioUser',{
+        pagina: "Inicio User",
     });
 }
 const signIn = (req, res)=>{
-    res.render("inicio",{
-        pagina: "se registro"
+    res.render('/user/inicioUser');
+    return res.render('/user/inicioUser',{
+        pagina: "Inicio User",
     });
 }
+const back = (req, res)=>{
+    res.render('inicio');
+    return res.render("inicio",{
+        pagina: "Bienvenido",
+    });
+}
+
 export{
-    inicio , logIn , signIn , logInLink ,signInLink
+    inicio , logInLink , signInLink, logIn , signIn , back
 }

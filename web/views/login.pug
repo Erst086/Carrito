@@ -9,13 +9,11 @@ html(lang="es")
         script(src="/js/pooper.min.js")
     body
         h1.text-center=pagina
-                div(class="row justify-content-center")
                     div(class="col-md-5")
-                    form(class="space-y-5" action="/logIn" method="POST" noValidate)
-                        br
-                        br
+                    form(class="space-y-5" action="/inicio" method="POST" noValidate)
                         div(class="mb-1")
                             label(for="usuario" class="form-label") Usuario
                             input#usuar(class="form-control" type="text" placeHolder="Usuario" name="nombre")
                         div(class="mb-1")
                             button(type="submit" class="btn btn-primary col-auto") Enviar
+                    a(href="/back") back
