@@ -1,9 +1,11 @@
 import { Sequelize } from "sequelize";
-const db = new Sequelize('carrito','root', '',{
-    dialect:'mariadb',
+import dotenv from 'dotenv'
+dotenv.config({path:'.env'})
+const db = new Sequelize(process.env.BD_NOMBRE,process.env.BD_USUARIO, process.env.BD_CLAVE,{
+    dialect:process.env.BD_DIALEC,
     dialectOptions:{
-        host:'127.0.0.1',
-        port:'3306',
+        host:process.env.BD_HOST,
+        port:process.env.BD_PORT,
         timestamps:false,
         underscore:false,
         pool:{
