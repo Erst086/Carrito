@@ -5,15 +5,21 @@ html(lang="es")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Credenciales
         link(rel="stylesheet", href="/css/bootstrap.css")
+        link(rel="stylesheet", href="/../../../css/style.css")
+        link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH' crossorigin='anonymous')
         script(src="/js/bootstrap.bundle.js")
         script(src="/js/pooper.min.js")
-    body
-        h1.text-center=pagina
-                    div(class="col-md-5")
-                    form(class="space-y-5" action="/inicio" method="POST" noValidate)
-                        div(class="mb-1")
-                            label(for="usuario" class="form-label") Usuario
-                            input#usuar(class="form-control" type="text" placeHolder="Usuario" name="nombre")
-                        div(class="mb-1")
-                            button(type="submit" class="btn btn-primary col-auto") Enviar
-                    a(href="/back") back
+.d-flex.justify-content-center.align-items-center.vh-100
+  form(style='width: 21rem; height: 34rem;')
+    .m-3.mb-2
+      label.form-label(for='nombre') Nombre
+      input#nombre.form-control(type='text' placeholder='Ingrese su nombre')
+      label.form-label.m-3(for='ap_paterno') Apellido paterno
+      input#ap_paterno.form-control(type='text' placeholder='Ingrese su apellido paterno')
+      label.form-label.m-3(for='ap_materno') Apellido materno
+      input#ap_materno.form-control(type='text' placeholder='Ingrese su apellido materno')
+      label.form-label.m-3(for='correo') Correo electr&oacute;nico
+      input#correo.form-control(type='email' placeholder='Ingrese su correo electronico')
+      label.form-label.m-3(for='password') Crea una contrase&ntilde;a
+      input#password.form-control(type='password' placeholder='Ingrese una contraseña')
+      button.btn.btn-primary.m-3(type='button') Registrar
