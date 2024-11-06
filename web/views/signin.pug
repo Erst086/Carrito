@@ -5,18 +5,15 @@ html(lang="es")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Credenciales
         link(rel="stylesheet", href="/css/bootstrap.css")
+        link(rel="stylesheet", href="/css/style.css")
         script(src="/js/bootstrap.bundle.js")
         script(src="/js/pooper.min.js")
-    body
-        h1.text-center=pagina
-                div(class="row justify-content-center")
-                    div(class="col-md-5")
-                    form(class="space-y-5" action="/inicio" method="POST" noValidate)
-                        br
-                        br
-                        div(class="mb-1")
-                            label(for="usuario" class="form-label") Usuario
-                            input#usuar(class="form-control" type="text" placeHolder="Usuario" name="nombre")
-                        div(class="mb-1")
-                            button(type="submit" class="btn btn-primary col-auto") Enviar
-                    a(href="/back") back
+
+.d-flex.justify-content-center.align-items-center.vh-100
+  form(style='width: 21rem; height: 18rem;')
+    .m-3.mb-2
+      label.form-label.m-3(for='usuario') Usuario
+      input#usuario.form-control(type='text' placeholder='Ingrese tu usuario')
+      label.form-label.m-3(for='password') Contrase&ntilde;a
+      input#password.form-control(type='password' placeholder='Ingrese tu contraseña')
+      button.btn.btn-primary.m-3(type='button') Ingresar
