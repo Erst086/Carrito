@@ -10,7 +10,7 @@ form{
     border-color: black;
     text-align: center;
 }
-footer{
+.f{
     position: fixed;
     left: 0;
     bottom: 0;
