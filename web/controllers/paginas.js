@@ -9,14 +9,20 @@ const xbox = (req, res)=>{
     });
 }
 
-const logIn = (req, res)=>{
-    res.render('/user/inicioUser');
-    return res.render('/user/inicioUser',{
-        pagina: "Inicio User",
+const play = (req, res)=>{
+    res.render('play');
+    return res.render("play",{
+        pagina: "Inico play station",
     });
 }
 
+const nin = (req, res)=>{
+    res.render('nin');
+    return res.render("nin",{
+        pagina: "Inico nintendo",
+    });
+}
 
 export{
-    xbox
+    xbox,play,nin
 }

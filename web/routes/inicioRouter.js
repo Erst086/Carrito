@@ -1,6 +1,6 @@
 import express from "express";
 import { inicio , logInLink , signInLink, logIn , signIn , back } from "../controllers/inicioController.js";
-import { xbox } from "../controllers/paginas.js";
+import { xbox , play , nin } from "../controllers/paginas.js";
 import {logInRes} from "../controllers/gestionUsuarios/logInController.js"
 import {signInRes} from "../controllers/gestionUsuarios/signInController.js"
 
@@ -12,6 +12,8 @@ routerInicio.get('/logIn' ,logInLink);          //Pagina de Log In
 routerInicio.get('/signIn' ,signInLink);        //Pagina de Sign In
 routerInicio.get('/back' ,back);                //Regreso a inicio
 routerInicio.get('/xbox' ,xbox);                //Regreso a inicio
+routerInicio.get('/play' ,play);                //Regreso a inicio
+routerInicio.get('/nin' ,nin);                //Regreso a inicio
 
 routerInicio.post('/inicio' ,logInRes);         //inicio usuario o inicio admin
 routerInicio.post('/inicio' ,signInRes);         //registro
