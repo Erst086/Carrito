@@ -1,10 +1,13 @@
 header.navbar.bg-body-tertiary
   .container-fluid
     a.navbar-brand.letra.ms-5 GameStart
-    img.img-fluid.rounded(src='/img/xbox.jpg' width='40' height='40')
-    img.img-fluid.rounded(src='/img/ps5.jpg' alt='Bootstrap' width='40' height='40')
-    img.img-fluid.rounded(src='/img/n.jpg' alt='Bootstrap' width='60' heigt='80')
-    form.d-flex(role='search')
+    a(href='/xbox')
+      img.img-fluid.rounded(src='/img/xbox.jpg' width='40' height='40')
+    a(href='../../play.pug')
+      img.img-fluid.rounded(src='/img/ps5.jpg' alt='Imagen de una PS5' width='40' height='40')
+    a(href='../../nin.pug')
+      img.img-fluid.rounded(src='/img/n.jpg' alt='Bootstrap' width='60' heigt='80')
+    a.form.d-flex(role='search')
       input.form-control.ms-2(type='search' placeholder='Buscar' aria-label='Search')
-      a.btn.btn-outline-success.ms-2(href="/logIn") Ingresar
-      a.btn.btn-outline-success.ms-2(href="/signIn") Registrar
+      a.btn.btn-outline-success.ms-5(href="/logIn") Ingresar
+      a.btn.btn-outline-success.me-5(href="/signIn") Registrar

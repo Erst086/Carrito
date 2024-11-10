@@ -22,3 +22,12 @@ footer{
     color: white;
     text-align: center;
 }
+img{
+    display: block;
+    margin: auto; 
+    height: 100vh;     
+}
+.btn.btn-primary{
+    display: block;
+    margin: auto;     
+}
