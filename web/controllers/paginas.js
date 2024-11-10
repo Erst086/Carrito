@@ -22,7 +22,12 @@ const nin = (req, res)=>{
         pagina: "Inico nintendo",
     });
 }
-
+const con = (req, res)=>{
+    res.render('con');
+    return res.render("con",{
+        pagina: "Inico consolas",
+    });
+}
 export{
-    xbox,play,nin
+    xbox,play,nin,con
 }

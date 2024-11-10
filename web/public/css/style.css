@@ -4,6 +4,10 @@ body{
 h5{
     text-align: center;
 }
+h1{
+    color: #fff;
+    text-align: center;
+}
 form{
     background-color: #fff;
     border-radius: 10%;
@@ -36,4 +40,7 @@ img{
 }
 .p{
     background: radial-gradient(circle, rgba(39,0,176,1) 9%, rgba(18,23,89,1) 64%); 
+}
+.c{
+    background: radial-gradient(circle, rgba(191,218,5,1) 16%, rgba(105,103,20,1) 67%); 
 }
