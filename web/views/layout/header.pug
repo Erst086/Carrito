@@ -1,5 +1,5 @@
 header.navbar.bg-body-tertiary
-  .container-fluid
+  .container
     a.navbar-brand.letra.ms-5(href="/") GameStart
     a(href='/xbox')
       img.img-fluid.rounded(src='/img/xbox.jpg' width='40' height='40')
@@ -8,6 +8,7 @@ header.navbar.bg-body-tertiary
     a(href='/nin')
       img.img-fluid.rounded(src='/img/n.jpg' alt='Bootstrap' width='60' heigt='80')
     a.form.d-flex(role='search')
+      img.img-fluid.rounded(src='/img/carrito.jpg' alt='Imagen de una PS5' width='40' height='40')
       input.form-control.ms-2(type='search' placeholder='Buscar' aria-label='Search')
-      a.btn.btn-outline-success.ms-5(href="/logIn") Ingresar
-      a.btn.btn-outline-success.me-5(href="/signIn") Registrar
+    a.btn.btn-outline-success(href="/logIn") Ingresar
+    a.btn.btn-outline-success(href="/signIn") Registrar
