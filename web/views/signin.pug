@@ -1,4 +1,5 @@
 doctype html
+doctype html
 html(lang="es")
     head
         meta(charset="UTF-8")
@@ -8,12 +9,19 @@ html(lang="es")
         link(rel="stylesheet", href="/css/style.css")
         script(src="/js/bootstrap.bundle.js")
         script(src="/js/pooper.min.js")
-
 .d-flex.justify-content-center.align-items-center.vh-100
-  form(style='width: 21rem; height: 18rem;')
+  form(style='width: 21rem; height: 39rem;')
     .m-3.mb-2
-      label.form-label.m-3(for='usuario') Usuario
-      input#usuario.form-control(type='text' placeholder='Ingrese tu usuario')
-      label.form-label.m-3(for='password') Contrase&ntilde;a
-      input#password.form-control(type='password' placeholder='Ingrese tu contraseña')
-      button.btn.btn-primary.m-3(type='button') Ingresar
+      label.form-label(for='nombre') Nombre
+      input#nombre.form-control(type='text' placeholder='Ingrese su nombre')
+      label.form-label.m-3(for='ap_paterno') Apellido paterno
+      input#ap_paterno.form-control(type='text' placeholder='Ingrese su apellido paterno')
+      label.form-label.m-3(for='ap_materno') Apellido materno
+      input#ap_materno.form-control(type='text' placeholder='Ingrese su apellido materno')
+      label.form-label.m-3(for='usuario') Crea un usuario
+      input#usuario.form-control(type='text' placeholder='Ingrese su usuario')
+      label.form-label.m-3(for='correo') Correo electr&oacute;nico
+      input#correo.form-control(type='email' placeholder='Ingrese su correo electronico')
+      label.form-label.m-3(for='password') Crea una contrase&ntilde;a
+      input#password.form-control(type='password' placeholder='Ingrese una contraseña')
+      button.btn.btn-primary.m-3(type='button') Registrar
