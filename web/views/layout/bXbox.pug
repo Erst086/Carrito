@@ -1,3 +1,15 @@
+doctype html
+html(lang="es")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title PLAY STATION 
+        link(rel="stylesheet", href="/css/bootstrap.css")
+        link(rel="stylesheet", href="/css/style.css")
+        script(src="/js/bootstrap.bundle.js")
+        script(src="/js/pooper.min.js")
+    body  
+    include header
 //- .col-ms-2(style='background-color: black')
 //-     h1 hola
 .container
@@ -10,7 +22,7 @@
           h5.card-title Dark Souls
           p.card-text
             | $00
-          a.btn.btn-primary(href='/signIn') Añadir al carrito
+          a.btn.btn-primary(href='/sign') Añadir al carrito
     .col-md-4
       .card.ms-5(style='width: 16rem; height: 22rem;')
         h1
@@ -18,7 +30,7 @@
         .card-body
           h5.card-title Halo Infinite
           p.card-text $00
-          a.btn.btn-primary(href='/signIn') Añadir al carrito
+          a.btn.btn-primary(href='/sign') Añadir al carrito
     .col-md-4
       .card.ms-5(style='width: 16rem; height: 22rem;')
         h1 
@@ -26,7 +38,7 @@
         .card-body
           h5.card-title Gears of War
           p.card-text $00
-          a.btn.btn-primary(href='/signIn') Añadir al carrito
+          a.btn.btn-primary(href='/sign') Añadir al carrito
   .row.p-5
     .col-md-4
       .card.ms-5(style='width: 16rem; height: 22rem;')
@@ -36,7 +48,7 @@
           h5.card-title Dead Space
           p.card-text
             | $00
-          a.btn.btn-primary(href='/signIn') Añadir al carrito
+          a.btn.btn-primary(href='/sign') Añadir al carrito
     .col-md-4
       .card.ms-5(style='width: 16rem; height: 22rem;')
         h1 
@@ -44,4 +56,4 @@
         .card-body
           h5.card-title Skyrim
           p.card-text $00
-          a.btn.btn-primary(href='/signIn') Añadir al carrito
+          a.btn.btn-primary(href='/sign') Añadir al carrito

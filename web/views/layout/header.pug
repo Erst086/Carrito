@@ -10,7 +10,22 @@ header.navbar.bg-body-tertiary
     a(href='/con')
       img.img-fluid.rounded(src='/img/mando.jpg' alt='Bootstrap' width='40' heigt='40')
     a.form.d-flex(role='search')
-      img.img-fluid.rounded(src='/img/carrito.jpg' alt='Imagen de una PS5' width='40' height='40')
-      input.form-control.ms-2(type='search' placeholder='Buscar' aria-label='Search')
-    a.btn.btn-outline-success(href="/logIn") Ingresar
-    a.btn.btn-outline-success(href="/signIn") Registrar
+    .two.columns
+      ul
+        li.submenu
+          img.img-fluid.rounded(src='/img/carrito.jpg' alt='Imagen de una PS5' width='40' height='40')
+          #carrito
+            table(class="table table-bordered")
+              thead
+                tr
+                  th Imagen
+                  th Nombre
+                  th Precio
+                  th Cantidad
+              tbody
+            a#vaciar-carrito.button.btn.btn-primary(type='button' href='#') Vaciar Carrito
+    .two.columns   
+      input.form-control(type='search' placeholder='Buscar' aria-label='Search')
+    .two.columns 
+      a.btn.btn-outline-success.me-2(href="/log") Ingresar
+      a.btn.btn-outline-success(href="/sign") Registrar
