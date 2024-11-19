@@ -10,16 +10,16 @@ html(lang="es")
         script(src="/js/pooper.min.js")
     body(class='p')
     include header
+//- .col-ms-2(style='background-color: black')
+//-     h1 hola
 .container
   .row(style='gap: 2rem; padding: 20px;')
-    h1 Play Station
-    h1
-    each con in consolas
-      .col
-        .card(style='width: 16rem; height: 22rem;')
-          h1
-          img.card-img-top(src='/img/consolap.jpg' alt='...' style='width: 12rem; height: 12rem;')
+    each pro in productos
+      .col-md-2
+        .card(style='width: 14rem; height: 22rem;')
+          h1 
+          img.card-img-top(src='/img/ds.jpg' alt='...' style='width: 10rem; height: 12rem;')
           .card-body
-            h5.card-title=`${con.nombre}`
-            p.card-text=`${con.precio.toFixed(2)}`
-            a.btn.btn-primary(href='/signIn') Añadir al carrito 
+            h5.card-title=`${pro.nombre}`
+            p.card-text=`${pro.precio.toFixed(2)}`
+            a.btn.btn-primary(href='/signIn') Añadir al carrito
