@@ -19,6 +19,8 @@ CREATE TABLE IF NOT EXISTS usuarios(
     contrasenia               VARCHAR(50) NOT NULL,
     fecha_registro            DATETIME DEFAULT NOW(),
     ultimo_acceso             DATETIME,
+    confirmar				  tinyint(1) DEFAULT 0,
+    token					  VARCHAR(50),
     id_rol                    INT NOT NULL,
     PRIMARY KEY(id_usuario),
     FOREIGN KEY(id_rol) REFERENCES roles(id_rol)
