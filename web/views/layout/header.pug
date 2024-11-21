@@ -1,13 +1,13 @@
-script(href="dom.js") 
+script(src="codigo.js")
 header.navbar.bg-body-tertiary
   .container
     a.navbar-brand.letra.ms-5(href="/") GameStart
-    a(href='/vid')
-      img.img-fluid.rounded(id='xbox' src='/img/xbox.jpg' width='40' height='40')
-    a(href='/vid')
-      img.img-fluid.rounded(id='play' src='/img/ps5.jpg' alt='Imagen de una PS5' width='40' height='40')
-    a(href='/vid')
-      img.img-fluid.rounded(id='nin' src='/img/n.jpg' alt='Bootstrap' width='60' heigt='80')
+    a(href='/xbox')
+      img.img-fluid.rounded(src='/img/xbox.jpg' width='40' height='40')
+    a(href='/play')
+      img.img-fluid.rounded(src='/img/ps5.jpg' alt='Imagen de una PS5' width='40' height='40')
+    a(href='/nin')
+      img.img-fluid.rounded(src='/img/n.jpg' alt='Bootstrap' width='60' heigt='80')
     a(href='/con')
       img.img-fluid.rounded(src='/img/mando.jpg' alt='Bootstrap' width='40' heigt='40')
     a.form.d-flex(role='search')
@@ -16,15 +16,16 @@ header.navbar.bg-body-tertiary
         li.submenu
           img.img-fluid.rounded(src='/img/carrito.jpg' alt='Imagen de una PS5' width='40' height='40')
           #carrito
-            table(class="table table-bordered")
+            table#lista-carrito.u-full-width
               thead
                 tr
                   th Imagen
                   th Nombre
                   th Precio
                   th Cantidad
+                  th
               tbody
-            a#vaciar-carrito.button.btn.btn-primary(type='button' href='#') Vaciar Carrito
+            a#vaciar-carrito.button.u-full-width(href='#') Vaciar Carrito
     .two.columns   
       input.form-control(type='search' placeholder='Buscar' aria-label='Search')
     .two.columns 

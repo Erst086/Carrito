@@ -20,7 +20,47 @@ const sing = (req, res) => {
     });
 };
 
-const videojuegos = async (req, res) => {
+const play = async (req, res) => {
+    try {
+        // Recuperar videojuegos de la base de datos
+        const productos = await Producto.findAll({
+            where: {
+                id_plataforma: 3, // Filtrar por categoría si es necesario
+                id_categoria: 1,
+            },
+        });
+        console.log(productos)
+        res.render("layout/bPlay", {
+            pagina: "Inicio videojuegos",
+            productos, // Pasar los datos a la vista
+        });
+    } catch (error) {
+        console.error("Error al recuperar videojuegos:", error);
+        res.status(500).send("Error interno del servidor");
+    }
+};
+
+const nin = async (req, res) => {
+    try {
+        // Recuperar videojuegos de la base de datos
+        const productos = await Producto.findAll({
+            where: {
+                id_plataforma: 2, // Filtrar por categoría si es necesario
+                id_categoria: 1,
+            },
+        });
+        console.log(productos)
+        res.render("layout/bNin", {
+            pagina: "Inicio videojuegos",
+            productos, // Pasar los datos a la vista
+        });
+    } catch (error) {
+        console.error("Error al recuperar videojuegos:", error);
+        res.status(500).send("Error interno del servidor");
+    }
+};
+
+const xbox = async (req, res) => {
     try {
         // Recuperar videojuegos de la base de datos
         const productos = await Producto.findAll({
@@ -30,7 +70,7 @@ const videojuegos = async (req, res) => {
             },
         });
         console.log(productos)
-        res.render("layout/bVideojuegos", {
+        res.render("layout/bXbox", {
             pagina: "Inicio videojuegos",
             productos, // Pasar los datos a la vista
         });
@@ -61,4 +101,4 @@ const con = async (req, res) => {
     }
 };
 
-export { videojuegos, con, log, sing, inicio };
+export { play, xbox, nin , con, log, sing, inicio };
