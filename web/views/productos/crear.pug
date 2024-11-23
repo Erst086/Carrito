@@ -1,0 +1,27 @@
+doctype html
+html
+    head
+        title Crear Producto
+        link(rel="stylesheet" href="/css/CRUDstyles.css")
+    body
+        h1 Crear Nuevo Producto
+        form(action="/productos/crear" method="POST")
+            div
+                label(for="nombre") Nombre:
+                input(type="text" name="nombre" id="nombre" required)
+            div
+                label(for="costo") Costo:
+                input(type="number" name="costo" id="costo" required)
+            div
+                label(for="precio") Precio:
+                input(type="number" name="precio" id="precio" required)
+            div
+                label(for="descripcion") Descripción:
+                textarea(name="descripcion" id="descripcion")
+            div
+                label(for="stock") Stock:
+                input(type="number" name="stock" id="stock" required)
+            div
+                button(type="submit") Crear Producto
+            div
+                a(href="/productos") Cancelar

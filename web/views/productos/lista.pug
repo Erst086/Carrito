@@ -1,0 +1,33 @@
+doctype html
+html
+  head
+    title Lista de Productos
+    link(rel="stylesheet" href="/css/CRUDstyles.css")
+  body
+    h2 Lista de Productos
+    a(href="/productos/crear" class="nuevo-producto") Nuevo Producto
+    table
+      thead
+        tr
+          th ID
+          th Nombre
+          th Categoría
+          th Precio
+          th Stock
+          th Acciones
+      tbody
+        if productos && productos.length
+          each producto in productos
+            tr
+              td= producto.id_producto
+              td= producto.nombre
+              td= producto.id_categoria
+              td= producto.precio
+              td= producto.stock
+              td
+                a(href=`/productos/editar/${producto.id_producto}` class="editar") Editar
+                form(action=`/productos/eliminar/${producto.id_producto}` method="POST" style="display:inline;")
+                  button(type="submit" class="eliminar") Eliminar
+        else
+          tr
+            td(colspan="6") No hay productos disponibles.

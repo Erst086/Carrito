@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title Productos
+    link(rel="stylesheet" href="/css/CRUDstyles.css")
+  body
+    h1 Lista de Productos
+    a(href="/productos/crear") Nuevo Producto
+    table
+      thead
+        tr
+          th ID
+          th Nombre
+          th Categoría
+          th Precio
+          th Stock
+          th Acciones
+      tbody
+        each producto in productos
+          tr
+            td= producto.id_producto
+            td= producto.nombre
+            td= producto.id_categoria
+            td= producto.precio
+            td= producto.stock
+            td
+              a(href=`/productos/editar/${producto.id_producto}`) Editar
+              form(action=`/productos/eliminar/${producto.id_producto}` method="POST" style="display:inline;")
+                button(type="submit") Eliminar

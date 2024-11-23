@@ -10,11 +10,12 @@ const Producto = db.define('productos', {
         primaryKey: true,
     },
     nombre: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(50), // varchar(50)
         allowNull: false,
     },
     id_categoria: {
         type: DataTypes.INTEGER,
+        allowNull: true, // Campo permite NULL
         references: {
             model: Categoria,
             key: 'id_categoria',
@@ -22,28 +23,34 @@ const Producto = db.define('productos', {
     },
     costo: {
         type: DataTypes.DECIMAL(10, 2),
+        allowNull: true,
     },
     precio: {
         type: DataTypes.DECIMAL(10, 2),
+        allowNull: true,
     },
     descripcion: {
         type: DataTypes.TEXT,
+        allowNull: true,
     },
     imagen: {
-        type: DataTypes.BLOB("long"),
+        type: DataTypes.BLOB('long'), // longblob
+        allowNull: true,
     },
     stock: {
         type: DataTypes.INTEGER,
+        allowNull: true,
     },
     id_plataforma: {
         type: DataTypes.INTEGER,
+        allowNull: true,
         references: {
             model: Plataforma,
             key: 'id_plataforma',
         },
     },
 }, {
-    timestamps: false,
+    timestamps: false, // La tabla no tiene columnas de timestamps
 });
 
 Categoria.hasMany(Producto, { foreignKey: 'id_categoria' });

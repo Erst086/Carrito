@@ -1,0 +1,27 @@
+doctype html
+html
+    head
+        title Editar Producto
+        link(rel="stylesheet" href="/css/CRUDstyles.css")
+    body
+        h1 Editar Producto
+        form(action=`/productos/editar/${producto.id_producto}` method="POST")
+            div
+                label(for="nombre") Nombre:
+                input(type="text" name="nombre" id="nombre" value=producto.nombre required)
+            div
+                label(for="costo") Costo:
+                input(type="number" name="costo" id="costo" value=producto.costo required)
+            div
+                label(for="precio") Precio:
+                input(type="number" name="precio" id="precio" value=producto.precio required)
+            div
+                label(for="descripcion") Descripción:
+                textarea(name="descripcion" id="descripcion")= producto.descripcion
+            div
+                label(for="stock") Stock:
+                input(type="number" name="stock" id="stock" value=producto.stock required)
+            div
+                button(type="submit") Guardar Cambios
+            div
+                a(href="/productos") Cancelar
