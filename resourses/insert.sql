@@ -75,10 +75,8 @@ INSERT INTO productos (nombre, id_categoria, costo, precio, descripcion, stock, 
     ('R6 Siege', 1, 20.00, 29.99, 'Juego táctico de disparos', 60, 1),
     ('GTA V', 1, 25.00, 49.99, 'Juego de acción y aventura en mundo abierto', 80, 1),
     ('Minecraft Dungeons', 1, 25.00, 39.99, 'Juego de rol y acción', 60, 1),
-    ('Control', 1, 30.00, 59.99, 'Juego de acción y aventura', 75, 1);
-
+    ('Control', 1, 30.00, 59.99, 'Juego de acción y aventura', 75, 1),
 -- Insertar productos para Nintendo
-INSERT INTO productos (nombre, id_categoria, costo, precio, descripcion, stock, id_plataforma) VALUES
     ('Super Mario Odyssey', 1, 35.00, 59.99, 'Juego de plataformas de Mario', 70, 2),
     ('The Legend of Zelda: Breath of the Wild', 1, 35.00, 59.99, 'Aventura y exploración en un mundo abierto', 50, 2),
     ('Animal Crossing: New Horizons', 1, 30.00, 59.99, 'Simulación de vida en una isla', 90, 2),
@@ -108,9 +106,8 @@ INSERT INTO productos (nombre, id_categoria, costo, precio, descripcion, stock, 
     ('Bravely Default II', 1, 32.00, 59.99, 'Juego de rol clásico con estilo de batallas por turnos', 60, 2),
     ('Shin Megami Tensei V', 1, 38.00, 59.99, 'Juego de rol y batalla por turnos', 45, 2),
     ('Monster Hunter Rise', 1, 35.00, 59.99, 'Juego de acción y caza de monstruos', 50, 2),
-    ('Super Mario 3D World + Bowser´s Fury', 1, 35.00, 59.99, 'Juego de plataformas y aventura', 80, 2);
+    ('Super Mario 3D World + Bowser´s Fury', 1, 35.00, 59.99, 'Juego de plataformas y aventura', 80, 2),
 -- Insertar accesorios para Xbox
-INSERT INTO productos (nombre, id_categoria, costo, precio, descripcion, stock, id_plataforma) VALUES
     ('Xbox Wireless Controller', 2, 40.00, 59.99, 'Control inalámbrico para Xbox', 150, 1),
     ('Xbox Elite Wireless Controller Series 2', 2, 100.00, 179.99, 'Control inalámbrico premium para Xbox', 80, 1),
     ('Xbox Game Pass Ultimate', 2, 15.00, 29.99, 'Suscripción mensual para Xbox Game Pass Ultimate', 200, 1),
@@ -121,10 +118,8 @@ INSERT INTO productos (nombre, id_categoria, costo, precio, descripcion, stock, 
     ('HyperX CloudX', 2, 50.00, 89.99, 'Auriculares con micrófono para Xbox', 100, 1),
     ('Xbox Adaptive Controller', 2, 90.00, 99.99, 'Control adaptativo para jugadores con movilidad limitada', 50, 1),
     ('Thrustmaster TMX Racing Wheel', 2, 150.00, 249.99, 'Volante para juegos de carreras en Xbox', 40, 1),
-    ('PDP Afterglow Wireless Controller', 2, 35.00, 59.99, 'Control inalámbrico con luces para Xbox', 60, 1);
-
+    ('PDP Afterglow Wireless Controller', 2, 35.00, 59.99, 'Control inalámbrico con luces para Xbox', 60, 1),
 -- Insertar accesorios para Nintendo
-INSERT INTO productos (nombre, id_categoria, costo, precio, descripcion, stock, id_plataforma) VALUES
     ('Nintendo Switch Pro Controller', 2, 60.00, 69.99, 'Control Pro para Nintendo Switch', 150, 2),
     ('Nintendo Switch Joy-Con (Par)', 2, 40.00, 79.99, 'Par de controles Joy-Con para Nintendo Switch', 200, 2),
     ('Nintendo Switch Online', 2, 3.00, 19.99, 'Suscripción mensual para Nintendo Switch Online', 300, 2),
