@@ -11,16 +11,15 @@ html(lang="es")
         script(src="codigo.js")
     body(class='p')
     include header
-//- .col-ms-2(style='background-color: black')
-//-     h1 hola
+    
 .container
   .row(style='gap: 2rem; padding: 20px;')
     each pro in productos
       .col-md-2
-        .card(style='width: 14rem; height: 22rem;')
+        .card(style='width: 14rem; height: 24rem;')
           h1 
           img.card-img-top(src='/img/ds.jpg' alt='...' style='width: 10rem; height: 12rem;')
           .card-body
             h5.card-title=`${pro.nombre}`
             p.card-text=`${pro.precio.toFixed(2)}`
-            a.btn.btn-primary(href='/signIn') Añadir al carrito
+            a.btn.btn-primary(href='/log') Añadir al carrito

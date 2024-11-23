@@ -8,6 +8,9 @@ h1{
     color: #fff;
     text-align: center;
 }
+h4{
+    color: black;
+}
 form{
     background-color: #fff;
     border-radius: 10%;
@@ -180,4 +183,47 @@ ul {
     font-size: 22px;
 }
 
+.card-title {
+    min-height: 3rem; /* Ajusta según el texto promedio */
+    overflow: hidden; /* Evita que textos largos desborden */
+    text-overflow: ellipsis; /* Agrega puntos suspensivos si es necesario */
+    white-space: nowrap; /* Mantén el texto en una sola línea */
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribuye el contenido equitativamente */
+    height: 100%; /* Asegura que ocupe todo el espacio disponible */
+}
+
+.card-text {
+    font-size: 1.2rem; /* Ajusta el tamaño del precio si es necesario */
+    font-weight: bold;
+}
+
+.btn-primary {
+    align-self: center; /* Centra el botón en la tarjeta */
+    margin-top: auto; /* Empuja el botón hacia la parte inferior */
+}
+form {
+    position: relative; /* Necesario para posicionar elementos relativos al formulario */
+}
+.btn-regresar {
+    position: absolute;
+    top: 10px; /* Ajusta según el margen deseado */
+    left: 10px; /* Ajusta según el margen deseado */
+    padding: 5px 10px; /* Opcional: Ajusta el tamaño del botón */
+    font-size: 0.9rem; /* Opcional: Ajusta el tamaño del texto */
+    text-align: center;
+    background-color: #007bff; /* Color del botón */
+    color: #fff;
+    border: none;
+    border-radius: 5px; /* Bordes redondeados */
+    text-decoration: none;
+}
+
+.btn-regresar:hover {
+    background-color: #0056b3; /* Efecto al pasar el mouse */
+}
 

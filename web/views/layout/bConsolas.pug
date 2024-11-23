@@ -16,10 +16,10 @@ html(lang="es")
     h1
     each con in consolas
       .col
-        .card(style='width: 16rem; height: 22rem;')
+        .card(style='width: 16rem; height: 24rem;')
           h1
           img.card-img-top(src='/img/consolap.jpg' alt='...' style='width: 12rem; height: 12rem;')
           .card-body
             h5.card-title=`${con.nombre}`
             p.card-text=`${con.precio.toFixed(2)}`
-            a.btn.btn-primary(href='/signIn') Añadir al carrito 
+            a.btn.btn-primary.mb-2(href='/log') Añadir al carrito 
