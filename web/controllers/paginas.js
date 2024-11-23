@@ -29,7 +29,6 @@ const play = async (req, res) => {
                 id_categoria: 1,
             },
         });
-        console.log(productos)
         res.render("layout/bPlay", {
             pagina: "Inicio videojuegos",
             productos, // Pasar los datos a la vista
@@ -49,7 +48,6 @@ const nin = async (req, res) => {
                 id_categoria: 1,
             },
         });
-        console.log(productos)
         res.render("layout/bNin", {
             pagina: "Inicio videojuegos",
             productos, // Pasar los datos a la vista
@@ -69,7 +67,6 @@ const xbox = async (req, res) => {
                 id_categoria: 1,
             },
         });
-        console.log(productos)
         res.render("layout/bXbox", {
             pagina: "Inicio videojuegos",
             productos, // Pasar los datos a la vista

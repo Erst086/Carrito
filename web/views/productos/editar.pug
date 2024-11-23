@@ -3,25 +3,33 @@ html
     head
         title Editar Producto
         link(rel="stylesheet" href="/css/CRUDstyles.css")
+        link(rel="stylesheet", href="/css/style.css")
+        link(rel="stylesheet", href="/css/bootstrap.css")
     body
-        h1 Editar Producto
-        form(action=`/productos/editar/${producto.id_producto}` method="POST")
-            div
-                label(for="nombre") Nombre:
-                input(type="text" name="nombre" id="nombre" value=producto.nombre required)
-            div
-                label(for="costo") Costo:
-                input(type="number" name="costo" id="costo" value=producto.costo required)
-            div
-                label(for="precio") Precio:
-                input(type="number" name="precio" id="precio" value=producto.precio required)
-            div
-                label(for="descripcion") Descripción:
-                textarea(name="descripcion" id="descripcion")= producto.descripcion
-            div
-                label(for="stock") Stock:
-                input(type="number" name="stock" id="stock" value=producto.stock required)
-            div
-                button(type="submit") Guardar Cambios
-            div
-                a(href="/productos") Cancelar
+        h1.text-center Editar Producto
+        .d-flex.justify-content-center.align-items-center.vh-100
+            form(action=`/productos/editar/${producto.id_producto}` method="POST" style='width:24rem;')
+                div.mb-3
+                    label.form-label(for="nombre") Nombre:
+                    input.form-control.mx-auto(type="text" name="nombre" id="nombre" value=producto.nombre required style="width:75%;")
+                div.mb-3
+                    label.form-label(for="costo") Costo:
+                    input.form-control.mx-auto(type="number" name="costo" id="costo" value=producto.costo required style="width:75%;")
+                div.mb-3
+                    label.form-label(for="precio") Precio:
+                    input.form-control.mx-auto(type="number" name="precio" id="precio" value=producto.precio required style="width:75%;")
+                div.mb-3
+                    label.form-label(for="id_categoria") Categoria:
+                    input.form-control.mx-auto(type="number" name="id_categoria" id="id_categoria" value=producto.id_categoria required style="width:75%;")
+                div.mb-3
+                    label.form-label(for="id_plataforma") Plataforma:
+                    input.form-control.mx-auto(type="number" name="id_plataforma" id="id_plataforma" value=producto.id_plataforma required style="width:75%;")
+                div.mb-3
+                    label.form-label(for="descripcion") Descripción:
+                    textarea.form-control.mx-auto(name="descripcion" id="descripcion" style="width:75%;")= producto.descripcion
+                div.mb-3
+                    label.form-label(for="stock") Stock:
+                    input.form-control.mx-auto(type="number" name="stock" id="stock" value=producto.stock required style="width:75%;")
+                div.d-flex.gap-2.justify-content-center
+                    button.btn.btn-primary(type="submit") Guardar Cambios
+                    a.btn.btn-secondary.me-5(href="/productos") Cancelar

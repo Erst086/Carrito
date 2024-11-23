@@ -3,25 +3,33 @@ html
     head
         title Crear Producto
         link(rel="stylesheet" href="/css/CRUDstyles.css")
+        link(rel="stylesheet", href="/css/style.css")
+        link(rel="stylesheet", href="/css/bootstrap.css")
     body
-        h1 Crear Nuevo Producto
-        form(action="/productos/crear" method="POST")
-            div
-                label(for="nombre") Nombre:
-                input(type="text" name="nombre" id="nombre" required)
-            div
-                label(for="costo") Costo:
-                input(type="number" name="costo" id="costo" required)
-            div
-                label(for="precio") Precio:
-                input(type="number" name="precio" id="precio" required)
-            div
-                label(for="descripcion") Descripción:
-                textarea(name="descripcion" id="descripcion")
-            div
-                label(for="stock") Stock:
-                input(type="number" name="stock" id="stock" required)
-            div
-                button(type="submit") Crear Producto
-            div
-                a(href="/productos") Cancelar
+        h1.text-center Crear Nuevo Producto
+        .d-flex.justify-content-center.align-items-center.vh-100
+            form(action="/productos/crear" method="POST" style="width:24rem;")
+                div.mb-3
+                    label.form-label(for="nombre") Nombre:
+                    input.form-control.mx-auto(name="nombre" id="nombre" required style="width:75%;")
+                div.mb-3
+                    label.form-label(for="costo") Costo:
+                    input.form-control.mx-auto(type="number" name="costo" id="costo" required style="width:75%;")
+                div.mb-3
+                    label.form-label(for="precio") Precio:
+                    input.form-control.mx-auto(type="number" name="precio" id="precio" required style="width:75%;")
+                div.mb-3
+                    label.form-label(for="id_categoria") Categoria:
+                    input.form-control.mx-auto(type="number" name="id_categoria" id="id_categoria" required style="width:75%;")
+                div.mb-3
+                    label.form-label(for="id_plataforma") Plataforma:
+                    input.form-control.mx-auto(type="number" name="id_plataforma" id="id_plataforma" required style="width:75%;")
+                div.mb-3
+                    label.form-label(for="descripcion") Descripción:
+                    textarea.form-control(name="descripcion" id="descripcion")
+                div.mb-3
+                    label.form-label(for="stock") Stock:
+                    input.form-control.mx-auto(type="number" name="stock" id="stock" required style="width:75%;")
+                div.d-flex.justify-content-between
+                    button.btn.btn-primary(type="submit") Crear Producto
+                    a.btn.btn-secondary.me-5(href="/productos") Cancelar
