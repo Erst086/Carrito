@@ -10,7 +10,11 @@ html(lang="es")
         script(src="/js/pooper.min.js")
         script(src="codigo.js")
     body(class='p')
-    include ../layout/header.pug
+      //- Renderiza un header diferente basado en la variable `userLoggedIn`
+      if userLoggedIn
+        include ../layout/headerUsuario.pug
+      else
+        include ../layout/header.pug
 
 .container
   .row(style='gap: 2rem; padding: 20px;')

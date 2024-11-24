@@ -8,8 +8,12 @@ html(lang="es")
     link(rel="stylesheet", href="/css/style.css")
     script(src="/js/bootstrap.bundle.js")
     script(src="/js/pooper.min.js")
-  body
-    include ../layout/header.pug
+    body
+      //- Renderiza un header diferente basado en la variable `userLoggedIn`
+      if userLoggedIn
+        include ../layout/headerUsuario.pug
+      else
+        include ../layout/header.pug
 
     .container
       //- Sección PlayStation
