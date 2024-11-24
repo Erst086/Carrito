@@ -9,7 +9,7 @@ const inicio = (req, res) => {
 };
 
 const admin = (req, res) => {
-    res.render("admin/bAdmin", {
+    res.render("admin/inicioAdministrador", {
         pagina: "Bienvenido",
     });
 };
@@ -35,7 +35,7 @@ const play = async (req, res) => {
                 id_categoria: 1,
             },
         });
-        res.render("layout/bPlay", {
+        res.render("consolas/bPlay", {
             pagina: "Inicio videojuegos",
             productos, // Pasar los datos a la vista
         });
@@ -54,7 +54,7 @@ const nin = async (req, res) => {
                 id_categoria: 1,
             },
         });
-        res.render("layout/bNin", {
+        res.render("consolas/bNin", {
             pagina: "Inicio videojuegos",
             productos, // Pasar los datos a la vista
         });
@@ -73,7 +73,7 @@ const xbox = async (req, res) => {
                 id_categoria: 1,
             },
         });
-        res.render("layout/bXbox", {
+        res.render("consolas/bXbox", {
             pagina: "Inicio videojuegos",
             productos, // Pasar los datos a la vista
         });
@@ -104,7 +104,7 @@ const con = async (req, res) => {
         );
 
         // Renderizar la vista con las consolas separadas
-        res.render("layout/bConsolas", {
+        res.render("consolas/bConsolas", {
             pagina: "Inicio consolas",
             playstation,
             xbox,
