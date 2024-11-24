@@ -82,26 +82,37 @@ const xbox = async (req, res) => {
         res.status(500).send("Error interno del servidor");
     }
 };
-
 const con = async (req, res) => {
     try {
-        // Recuperar consolas de la base de datos
         const consolas = await Producto.findAll({
             where: {
                 id_categoria: {
-                    [Op.in]: [2, 3, 4], // Lista de categorías permitidas
+                    [Op.in]: [2, 4], 
                 },
             },
         });
 
+        // Filtrar consolas por categoría y plataforma
+        const playstation = consolas.filter(
+            consola => consola.id_plataforma === 3
+        );
+        const xbox = consolas.filter(
+            consola => consola.id_plataforma === 1
+        );
+        const nintendo = consolas.filter(
+            consola => consola.id_plataforma === 2
+        );
+
+        // Renderizar la vista con las consolas separadas
         res.render("layout/bConsolas", {
             pagina: "Inicio consolas",
-            consolas, // Pasar los datos a la vista
+            playstation,
+            xbox,
+            nintendo,
         });
     } catch (error) {
         console.error("Error al recuperar consolas:", error);
         res.status(500).send("Error interno del servidor");
     }
 };
-
 export { play, xbox, nin , con, log, sing, inicio , admin};
