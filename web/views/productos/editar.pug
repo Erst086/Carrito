@@ -6,6 +6,7 @@ html
         link(rel="stylesheet", href="/css/style.css")
         link(rel="stylesheet", href="/css/bootstrap.css")
     body
+        a.btn-regresar(href='/productos') Regresar
         h1.text-center Editar Producto
         .d-flex.justify-content-center.align-items-center.vh-100
             form(action=`/productos/editar/${producto.id_producto}` method="POST" style='width:24rem;')
@@ -32,4 +33,4 @@ html
                     input.form-control.mx-auto(type="number" name="stock" id="stock" value=producto.stock required style="width:75%;")
                 div.d-flex.gap-2.justify-content-center
                     button.btn.btn-primary(type="submit") Guardar Cambios
-                    a.btn.btn-secondary.me-5(href="/productos") Cancelar
+                    a.btn.btn-secondary.me-5(href="/admin") Cancelar

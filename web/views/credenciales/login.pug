@@ -10,7 +10,9 @@ html(lang="es")
         script(src="/js/pooper.min.js")
 a.btn-regresar(href='/') Regresar
 .d-flex.justify-content-center.align-items-center.vh-100
-  form(style='width: 21rem; height: 20rem;')
+  form.position-relative(style='width: 21rem; height: 20rem;')
+    .position-absolute.top-0.end-0.m-2
+      a.btn.btn-primary(href='/admin') Admin
     .m-3.mb-2
       label.form-label.m-3(for='usuario') Usuario
       input#usuario.form-control(type='text' placeholder='Ingrese tu usuario')
@@ -19,3 +21,4 @@ a.btn-regresar(href='/') Regresar
       button.btn.btn-primary(type='submit') Ingresar
       label.form-label.m-3(for='usuario') ¿No tienes cuenta? 
       a.u-full-width.button-primary.button(href='/sign') Registrate
+

@@ -8,6 +8,12 @@ const inicio = (req, res) => {
     });
 };
 
+const admin = (req, res) => {
+    res.render("layout/bAdmin", {
+        pagina: "Bienvenido",
+    });
+};
+
 const log = (req, res) => {
     res.render("credenciales/login", {
         pagina: "Inicio xbox",
@@ -98,4 +104,4 @@ const con = async (req, res) => {
     }
 };
 
-export { play, xbox, nin , con, log, sing, inicio };
+export { play, xbox, nin , con, log, sing, inicio , admin};

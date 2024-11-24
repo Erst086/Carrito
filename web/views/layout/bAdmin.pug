@@ -1,0 +1,37 @@
+doctype html
+html(lang="es")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title INICIO
+        link(rel="stylesheet", href="/css/bootstrap.css")
+        link(rel="stylesheet", href="/css/style.css")
+        script(src="/js/bootstrap.bundle.js")
+        script(src="/js/pooper.min.js")
+    body(class='p')  
+        script(src="codigo.js")
+        header.navbar.bg-body-tertiary
+            .container
+                a.navbar-brand.letra.ms-5(href="/admin") GameStart
+                .d-flex.align-items-center.gap-3
+                    h4 = nombre
+                    a.btn.btn-primary(href='/log') Salir
+
+        include nav
+        .container
+            .row.justify-content-center.align-items-center.p-5
+                .col-md-6.d-flex.justify-content-center
+                    .card(style='width: 18rem; height: 21rem;')
+                        img.card-img-top(src='/img/lista.jpg' alt='...' style='width: 12rem; height: 12rem;')
+                        .card-body
+                            h5.card-title Lista de productos
+                            a.btn.btn-primary(href='/productos') Ingresar
+
+                .col-md-6.d-flex.justify-content-center
+                    .card(style='width: 18rem; height: 21rem;')
+                        img.card-img-top(src='/img/crear.jpg' alt='...' style='width: 10rem; height: 10rem;')
+                        .card-body
+                            h5.card-title Crear producto
+                            a.btn.btn-primary(href='/productos/crear') Ingresar
+
+        

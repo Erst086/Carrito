@@ -7,6 +7,7 @@ html
         link(rel="stylesheet", href="/css/bootstrap.css")
         
     body
+        a.btn-regresar(href='/productos') Regresar
         h1.text-center Crear Nuevo Producto
         .d-flex.justify-content-center.align-items-center.vh-100
             form(action="/productos/crear" method="POST" style="width:24rem;")
@@ -33,4 +34,4 @@ html
                     input.form-control.mx-auto(type="number" name="stock" id="stock" required style="width:75%;")
                 div.d-flex.justify-content-between
                     button.btn.btn-primary(type="submit") Crear Producto
-                    a.btn.btn-secondary.me-5(href="/productos") Cancelar
+                    a.btn.btn-secondary.me-5(href="/admin") Cancelar
