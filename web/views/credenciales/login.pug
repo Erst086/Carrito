@@ -9,6 +9,11 @@ html(lang="es")
         script(src="/js/bootstrap.bundle.js")
         script(src="/js/pooper.min.js")
 a.btn-regresar(href='/') Regresar
+if errores
+  div(class="row justify-content-center text-bg-danger" )
+    div(class="col-md-5")
+      each er in errores
+        h1(class="fw-bold fs-6")=er.msg
 .d-flex.justify-content-center.align-items-center.vh-100
   form(style='width: 21rem; height: 20rem;' action="/logIn" method="POST" noValidate)
     .m-3.mb-2
