@@ -3,7 +3,7 @@ import session from "express-session";
 import routerInicio from "./routes/inicioRouter.js"
 //import routerLogIn from "./routes/logInRouter.js";
 //import inicio from "./routes/signInRouter.js";
-//import routerUser from "./routes/userRouter.js";
+import usuarioRouter from "./routes/usuarioRouter.js";
 //import routerAdmin from "./routes/adminRouter.js";
 import productoRoutes from './routes/productoRoutes.js';
 import db from "./config/db.js";
@@ -34,6 +34,8 @@ app.use(express.static("public"));
 //routing
 app.use("/", routerInicio);
 app.use('/', productoRoutes);
+app.use('/', usuarioRouter);
+
 // stylos crud
 app.use('/css', express.static('public/css'));
 

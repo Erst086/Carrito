@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    title Lista de Usuarios
+    link(rel="stylesheet" href="/css/styleVuser.css")
+    
+  body
+    a.btn.btn-primary(href='/admin') Regresar
+    h1.text-center Lista de Usuarios
+    table
+      thead
+        tr
+          th ID
+          th Nombre
+          th Apellido Paterno
+          th Apellido Materno
+          th Correo
+          th Rol
+      tbody
+        if usuarios && usuarios.length
+          each usuario in usuarios
+            tr
+              td= usuario.id_usuario
+              td= usuario.nombre
+              td= usuario.ap_paterno
+              td= usuario.ap_materno
+              td= usuario.correo
+              td= usuario.id_rol
+        else
+          tr
+            td(colspan="6") No hay usuarios disponibles.
