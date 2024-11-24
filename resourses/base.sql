@@ -15,8 +15,8 @@ CREATE TABLE IF NOT EXISTS usuarios(
     nombre                    VARCHAR(100) NOT NULL,
     ap_paterno                VARCHAR(80) NOT NULL,
     ap_materno                VARCHAR(80) NOT NULL,
-    correo                    VARCHAR(250) NOT NULL,
-    contrasenia               VARCHAR(50) NOT NULL,
+    correo                    VARCHAR(250) UNIQUE NOT NULL,
+    contrasenia               VARCHAR(250) NOT NULL,
     fecha_registro            DATETIME DEFAULT NOW(),
     ultimo_acceso             DATETIME,
     confirmar				  tinyint(1) DEFAULT 0,
@@ -88,9 +88,3 @@ CREATE TABLE IF NOT EXISTS productos_venta(
     FOREIGN KEY(id_venta) REFERENCES ventas(id_venta),
     FOREIGN KEY(id_producto) REFERENCES productos(id_producto)
 ) DEFAULT CHARACTER SET UTF8MB4;
-
-/*
-    INSERT INTO plataformas(nombre, imagen) VALUES ('Nintendo', LOAD_FILE('ruta'));
-    INSERT INTO plataformas(nombre, imagen) VALUES ('PlayStation', LOAD_FILE('ruta'));
-    INSERT INTO plataformas(nombre, imagen) VALUES ('XBox', LOAD_FILE('ruta'));
-*/

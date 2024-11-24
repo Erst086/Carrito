@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 import db from '../config/db.js';
 
-const Categoria = db.define('categorias', {
+const Categorias = db.define('categorias', {
     id_categoria: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -19,4 +19,4 @@ const Categoria = db.define('categorias', {
     timestamps: false,
 });
 
-export default Categoria;
+export default Categorias;

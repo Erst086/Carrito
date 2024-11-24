@@ -10,15 +10,13 @@ html(lang="es")
         script(src="/js/pooper.min.js")
 a.btn-regresar(href='/') Regresar
 .d-flex.justify-content-center.align-items-center.vh-100
-  form.position-relative(style='width: 21rem; height: 20rem;')
-    .position-absolute.top-0.end-0.m-2
-      a.btn.btn-primary(href='/admin') Admin
+  form(style='width: 21rem; height: 20rem;' action="/logIn" method="POST" noValidate)
     .m-3.mb-2
-      label.form-label.m-3(for='usuario') Usuario
-      input#usuario.form-control(type='text' placeholder='Ingrese tu usuario')
+      input(type="hidden" name="_csrf" value=csrf)
+      label.form-label.m-3(for='correo') Correo electronico
+      input#usuario.form-control(type='text' placeholder='Ingrese su correo electronico', name="correo")
       label.form-label.m-3(for='password') Contrase&ntilde;a
-      input#password.form-control.mb-3(type='password' placeholder='Ingrese tu contraseña')
+      input#password.form-control.mb-3(type='password' placeholder='Ingrese tu contraseña', name="password")
       button.btn.btn-primary(type='submit') Ingresar
       label.form-label.m-3(for='usuario') ¿No tienes cuenta? 
-      a.u-full-width.button-primary.button(href='/sign') Registrate
-
+      a.u-full-width.button-primary.button(href='/signIn') Registrate

@@ -1,11 +1,12 @@
+//recursos
 import express from "express";
 import session from "express-session";
+import csrf from "csurf";
+import cookieParser from "cookie-parser";
+//routers
 import routerInicio from "./routes/inicioRouter.js"
-//import routerLogIn from "./routes/logInRouter.js";
-//import inicio from "./routes/signInRouter.js";
-import usuarioRouter from "./routes/usuarioRouter.js";
-//import routerAdmin from "./routes/adminRouter.js";
 import productoRoutes from './routes/productoRoutes.js';
+
 import db from "./config/db.js";
 //crea la aplicacion
 const app = express();
@@ -14,7 +15,10 @@ app.use(session({secret:'secreto', resave: false, saveUninitialized: false}));
 //accesos a los datos de los formularios
 app.use(express.urlencoded({extended : true}));
 app.use(express.json());
-
+//habilitar cookie parser
+app.use(cookieParser())
+//CSRF, forma global para la aplicación.
+app.use(csrf({cookie:true}))
 //conectando la base de datos
 try{
     await db.authenticate();
@@ -33,9 +37,7 @@ app.use(express.static("public"));
 
 //routing
 app.use("/", routerInicio);
-app.use('/', productoRoutes);
-app.use('/', usuarioRouter);
-
+//app.use('/', productoRoutes);
 // stylos crud
 app.use('/css', express.static('public/css'));
 

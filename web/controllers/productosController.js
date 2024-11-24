@@ -1,8 +1,8 @@
-import Producto from '../models/Producto.js';
+import Productos from '../models/Producto.js';
 
 export const crearProducto = async (req, res) => {
     try {
-        const nuevoProducto = await Producto.create(req.body);
+        const nuevoProducto = await Productos.create(req.body);
         return res.status(201).json(nuevoProducto); // Responde con el nuevo producto en formato JSON
     } catch (error) {
         console.error(error);
@@ -15,7 +15,7 @@ export const crearProducto = async (req, res) => {
 // Obtiene todos los productos
 export const obtenerProductos = async (req, res) => {
     try {
-      const productos = await Producto.findAll();  // Obtiene los productos de la base de datos
+      const productos = await Productos.findAll();  // Obtiene los productos de la base de datos
       return productos;  // Devuelve los productos, no responde
     } catch (error) {
       console.error('Error al obtener los productos:', error);
@@ -26,7 +26,7 @@ export const obtenerProductos = async (req, res) => {
   // Obtiene un producto por ID
   export const obtenerProductoPorId = async (req, res) => {
     try {
-      const producto = await Producto.findByPk(req.params.id_producto);
+      const producto = await Productos.findByPk(req.params.id_producto);
       return producto;  // Devuelve el producto, no responde
     } catch (error) {
       console.error('Error al obtener el producto:', error);
@@ -37,7 +37,7 @@ export const obtenerProductos = async (req, res) => {
 
 export const actualizarProducto = async (req, res) => {
     try {
-        const producto = await Producto.findByPk(req.params.id_producto);
+        const producto = await Productos.findByPk(req.params.id_producto);
         if (producto) {
             await producto.update(req.body);
             return res.status(200).json(producto); // Responde con el producto actualizado en formato JSON
@@ -52,7 +52,7 @@ export const actualizarProducto = async (req, res) => {
 
 export const eliminarProducto = async (req, res) => {
     try {
-        const producto = await Producto.findByPk(req.params.id_producto);
+        const producto = await Productos.findByPk(req.params.id_producto);
         if (producto) {
             await producto.destroy();
             return res.status(200).json({ message: 'Producto eliminado correctamente' }); // Responde con mensaje de éxito
@@ -66,7 +66,7 @@ export const eliminarProducto = async (req, res) => {
 };
 export const editarProducto = async (req, res, next) => {
     try {
-        const producto = await Producto.findByPk(req.params.id_producto);
+        const producto = await Productos.findByPk(req.params.id_producto);
         if (producto) {
             return res.render('productos/editar', { producto }); // Renderiza el formulario con los datos del producto
         } else {

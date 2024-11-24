@@ -1,9 +1,9 @@
 import { DataTypes } from 'sequelize';
 import db from '../config/db.js';
-import Usuario from './Usuario.js';
+import Usuarios from './Usuario.js';
 import DatosPago from './DatosPago.js';
 
-const Venta = db.define('ventas', {
+const Ventas = db.define('ventas', {
     id_venta: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -12,7 +12,7 @@ const Venta = db.define('ventas', {
     id_usuario: {
         type: DataTypes.INTEGER,
         references: {
-            model: Usuario,
+            model: Usuarios,
             key: 'id_usuario',
         },
     },
@@ -34,10 +34,10 @@ const Venta = db.define('ventas', {
     timestamps: false,
 });
 
-Usuario.hasMany(Venta, { foreignKey: 'id_usuario' });
-Venta.belongsTo(Usuario, { foreignKey: 'id_usuario' });
+Usuarios.hasMany(Ventas, { foreignKey: 'id_usuario' });
+Ventas.belongsTo(Usuarios, { foreignKey: 'id_usuario' });
 
-DatosPago.hasMany(Venta, { foreignKey: 'id_datopago' });
-Venta.belongsTo(DatosPago, { foreignKey: 'id_datopago' });
+DatosPago.hasMany(Ventas, { foreignKey: 'id_datopago' });
+Ventas.belongsTo(DatosPago, { foreignKey: 'id_datopago' });
 
-export default Venta;
+export default Ventas;

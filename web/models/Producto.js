@@ -1,9 +1,9 @@
 import { DataTypes } from 'sequelize';
 import db from '../config/db.js';
-import Categoria from './Categoria.js';
-import Plataforma from './Plataforma.js';
+import Categorias from './Categoria.js';
+import Plataformas from './Plataforma.js';
 
-const Producto = db.define('productos', {
+const Productos = db.define('productos', {
     id_producto: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -17,7 +17,7 @@ const Producto = db.define('productos', {
         type: DataTypes.INTEGER,
         allowNull: true, // Campo permite NULL
         references: {
-            model: Categoria,
+            model: Categorias,
             key: 'id_categoria',
         },
     },
@@ -45,7 +45,7 @@ const Producto = db.define('productos', {
         type: DataTypes.INTEGER,
         allowNull: true,
         references: {
-            model: Plataforma,
+            model: Plataformas,
             key: 'id_plataforma',
         },
     },
@@ -53,10 +53,10 @@ const Producto = db.define('productos', {
     timestamps: false, // La tabla no tiene columnas de timestamps
 });
 
-Categoria.hasMany(Producto, { foreignKey: 'id_categoria' });
-Producto.belongsTo(Categoria, { foreignKey: 'id_categoria' });
+Categorias.hasMany(Productos, { foreignKey: 'id_categoria' });
+Productos.belongsTo(Categorias, { foreignKey: 'id_categoria' });
 
-Plataforma.hasMany(Producto, { foreignKey: 'id_plataforma' });
-Producto.belongsTo(Plataforma, { foreignKey: 'id_plataforma' });
+Plataformas.hasMany(Productos, { foreignKey: 'id_plataforma' });
+Productos.belongsTo(Plataformas, { foreignKey: 'id_plataforma' });
 
-export default Producto;
+export default Productos;

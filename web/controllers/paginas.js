@@ -1,5 +1,5 @@
-import Usuario from "../models/Usuario.js";
-import Producto from "../models/Producto.js"; // Modelo para productos
+import Usuarios from "../models/Usuario.js";
+import Productos from "../models/Producto.js"; // Modelo para productos
 import { check, validationResult } from "express-validator";
 import { Op } from "sequelize";
 const inicio = (req, res) => {
@@ -29,7 +29,7 @@ const sing = (req, res) => {
 const play = async (req, res) => {
     try {
         // Recuperar videojuegos de la base de datos
-        const productos = await Producto.findAll({
+        const productos = await Productos.findAll({
             where: {
                 id_plataforma: 3, // Filtrar por categoría si es necesario
                 id_categoria: 1,
@@ -48,7 +48,7 @@ const play = async (req, res) => {
 const nin = async (req, res) => {
     try {
         // Recuperar videojuegos de la base de datos
-        const productos = await Producto.findAll({
+        const productos = await Productos.findAll({
             where: {
                 id_plataforma: 2, // Filtrar por categoría si es necesario
                 id_categoria: 1,
@@ -67,7 +67,7 @@ const nin = async (req, res) => {
 const xbox = async (req, res) => {
     try {
         // Recuperar videojuegos de la base de datos
-        const productos = await Producto.findAll({
+        const productos = await Productos.findAll({
             where: {
                 id_plataforma: 1, // Filtrar por categoría si es necesario
                 id_categoria: 1,
@@ -84,7 +84,7 @@ const xbox = async (req, res) => {
 };
 const con = async (req, res) => {
     try {
-        const consolas = await Producto.findAll({
+        const consolas = await Productos.findAll({
             where: {
                 id_categoria: {
                     [Op.in]: [2, 4], 

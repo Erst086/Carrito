@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 import db from '../config/db.js';
 
-const Plataforma = db.define('plataformas', {
+const Plataformas = db.define('plataformas', {
     id_plataforma: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -18,4 +18,4 @@ const Plataforma = db.define('plataformas', {
     timestamps: false,
 });
 
-export default Plataforma;
+export default Plataformas;

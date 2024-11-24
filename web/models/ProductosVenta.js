@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 import db from '../config/db.js';
-import Venta from './Venta.js';
-import Producto from './Producto.js';
+import Ventas from './Venta.js';
+import Productos from './Producto.js';
 
 const ProductoVenta = db.define('productos_venta', {
     id_productventa: {
@@ -12,14 +12,14 @@ const ProductoVenta = db.define('productos_venta', {
     id_venta: {
         type: DataTypes.INTEGER,
         references: {
-            model: Venta,
+            model: Ventas,
             key: 'id_venta',
         },
     },
     id_producto: {
         type: DataTypes.INTEGER,
         references: {
-            model: Producto,
+            model: Productos,
             key: 'id_producto',
         },
     },
@@ -39,10 +39,10 @@ const ProductoVenta = db.define('productos_venta', {
     timestamps: false,
 });
 
-Venta.hasMany(ProductoVenta, { foreignKey: 'id_venta' });
-ProductoVenta.belongsTo(Venta, { foreignKey: 'id_venta' });
+Ventas.hasMany(ProductoVenta, { foreignKey: 'id_venta' });
+ProductoVenta.belongsTo(Ventas, { foreignKey: 'id_venta' });
 
-Producto.hasMany(ProductoVenta, { foreignKey: 'id_producto' });
-ProductoVenta.belongsTo(Producto, { foreignKey: 'id_producto' });
+Productos.hasMany(ProductoVenta, { foreignKey: 'id_producto' });
+ProductoVenta.belongsTo(Productos, { foreignKey: 'id_producto' });
 
 export default ProductoVenta;
