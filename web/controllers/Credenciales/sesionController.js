@@ -56,7 +56,7 @@ const confirmacionRegistro = async (req, res) => {
     if(!user){
         res.render("credenciales/confirmacion", {
             pagina: "No se pudo confirmar tu cuenta",
-            mensaje:"Lo lamentamos no se pudo confirmar la cuenta intentalo de nuevo"
+            mensaje:"Lo lamentamos no se pudo confvalidacionFormularioInicioirmar la cuenta intentalo de nuevo"
         });
     }
     //confirmar la cuenta del usuario
