@@ -28,8 +28,5 @@ header.navbar.bg-body-tertiary
             a#vaciar-carrito.button.u-full-width(href='#') Vaciar Carrito
     .two.columns   
       input.form-control(type='search' placeholder='Buscar' aria-label='Search')
-    .two.columns
-      block cuerpocontenido
-      h4=nombre 
-      a.btn.btn-outline-success.me-2(href="/logIn") Ingresar
-      a.btn.btn-outline-success(href="/signIn") Registrar
+    .two.columns 
+      include ../credenciales/usuario.pug
