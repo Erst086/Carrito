@@ -9,7 +9,7 @@ const inicio = (req, res) => {
 };
 
 const admin = (req, res) => {
-    res.render("layout/bAdmin", {
+    res.render("admin/bAdmin", {
         pagina: "Bienvenido",
     });
 };
