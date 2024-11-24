@@ -1,8 +1,129 @@
-extends ../layout/index
-block cuerpocontenido
-    div 
-        h1.text-center=pagina
-        h2.text-center=inicio
-        h3.text-center=nmbr
-    div 
-        a(href="/") salir
+.container
+  .row.p-5
+    .col-md-4
+      .card.ms-5(style='width: 18rem; height: 26rem;')
+        img.card-img-top(src='/img/img.jpg' alt='...')
+        .card-body
+          h5.card-title Explora
+          p.card-text
+            | Encuentra varios productos relacionados al mundo del gaming y de la mejor calidad.
+          a.btn.btn-primary(href='/xbox') Busca nuestros titulos
+    .col-md-4
+      .card.ms-5(style='width: 18rem; height: 26rem;')
+        img.card-img-top(src='/img/img2.jpg' alt='...' style='height: 20rem;')
+        .card-body
+          h5.card-title Juega
+          p.card-text Prueba nuestro catalogo de videojuegos para que vivas grandes experiencias.
+          a.btn.btn-primary(href='/con') Busca tu consola
+
+  .row.p-5
+    h1 Checa nuestros productos de Play Station
+    h1
+    .col-md-3
+      .card(style='width: 16rem; height: 24rem;')
+        h1
+        img.card-img-top(src='/img/gow.jpg' alt='...' style='width: 10rem; height: 12rem;')
+        .card-body
+          h5.card-title God of War 
+          p.card-text $00
+          a.btn.btn-primary(href='/sign') Añadir al carrito
+
+    .col-md-3
+      .card(style='width: 16rem; height: 24rem;')
+        h1 
+        img.card-img-top(src='/img/tlu.jpg' alt='...' style='width: 10rem; height: 12rem;') 
+        .card-body
+          h5.card-title The last of Us
+          p.card-text $00
+          a.btn.btn-primary(href='/sign') Añadir al carrito
+    .col-md-3
+      .card(style='width: 16rem; height: 24rem;')
+        h1 
+        img.card-img-top(src='/img/iss.jpg' alt='...' style='width: 10rem; height: 12rem;')
+        .card-body
+          h5.card-title Infamous Second Son
+          p.card-text $00
+          a.btn.btn-primary(href='/sign') Añadir al carrito 
+    .col-md-3
+      .card(style='width: 16rem; height: 24rem;')
+        h1
+        img.card-img-top(src='/img/consolap.jpg' alt='...' style='width: 12rem; height: 12rem;')
+        .card-body
+          h5.card-title Play Station 5
+          p.card-text
+            | $00
+          a.btn.btn-primary(href='/sign') Añadir al carrito 
+  .row.p-5
+    h1 Checa nuestros productos de Xbox 
+    h1
+    .col-md-3
+      .card(style='width: 16rem; height: 24rem;')
+        h1 
+        img.card-img-top(src='/img/ds1.jpg' alt='...' style='width: 10rem; height: 12rem;')
+        .card-body
+          h5.card-title Dark Souls
+          p.card-text
+            | $00
+          a.btn.btn-primary(href='/sign') Añadir al carrito
+    .col-md-3
+      .card(style='width: 16rem; height: 24rem;')
+        h1 
+        img.card-img-top(src='/img/gears.jpg' alt='...' style='width: 10rem; height: 12rem;')
+        .card-body
+          h5.card-title Gears of War
+          p.card-text $00
+          a.btn.btn-primary(href='/sign') Añadir al carrito
+    .col-md-3
+      .card(style='width: 16rem; height: 24rem;')
+        h1
+        img.card-img-top(src='/img/halo.jpg' alt='...' style='width: 10rem; height: 12rem;')
+        .card-body
+          h5.card-title Halo Infinite
+          p.card-text $00
+          a.btn.btn-primary(href='/sign') Añadir al carrito
+    .col-md-3
+      .card(style='width: 16rem; height: 24rem;')
+        h1
+        img.card-img-top(src='/img/consolax.jpg' alt='...' style='width: 12rem; height: 12rem;')
+        .card-body
+          h5.card-title Xbox Series X 
+          p.card-text
+            | $00
+          a.btn.btn-primary(href='/sign') Añadir al carrito
+  .row.p-5
+    h1 Checa nuestros productos de Nintendo
+    h1
+    .col-md-3
+      .card(style='width: 16rem; height: 24rem;')
+        h1 
+        img.card-img-top(src='/img/mario.jpg' alt='...' style='width: 9rem; height: 12rem;')
+        .card-body
+          h5.card-title Super Mario Odyssey
+          p.card-text
+            | $00
+          a.btn.btn-primary(href='/sign') Añadir al carrito
+    .col-md-3
+      .card(style='width: 16rem; height: 24rem;')
+        h1 
+        img.card-img-top(src='/img/zelda.jpg' alt='...' style='width: 9rem; height: 12rem;')
+        .card-body
+          h5.card-title Leyend of Zelda: BOTW
+          p.card-text $00
+          a.btn.btn-primary(href='/sign') Añadir al carrito
+    .col-md-3
+      .card(style='width: 16rem; height: 24rem;')
+        h1 
+        img.card-img-top(src='/img/animal.jpg' alt='...' style='width: 9rem; height: 12rem;') 
+        .card-body
+          h5.card-title Animal crossing
+          p.card-text $00
+          a.btn.btn-primary(href='/sign') Añadir al carrito
+    .col-md-3
+      .card(style='width: 16rem; height: 24rem;')
+        h1
+        img.card-img-top(src='/img/consolan.jpg' alt='...' style='width: 12rem; height: 12rem;')
+        .card-body
+          h5.card-title Nintendo Switch 
+          p.card-text
+            | $00
+          a.btn.btn-primary(href='/sign') Añadir al carrito

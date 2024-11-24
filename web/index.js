@@ -5,7 +5,8 @@ import csrf from "csurf";
 import cookieParser from "cookie-parser";
 //routers
 import routerInicio from "./routes/inicioRouter.js"
-import productoRoutes from './routes/productoRoutes.js';
+import productoRoutes from './routes/productoRoutes.js'
+import usuarioRouter from './routes/usuarioRouter.js';
 
 import db from "./config/db.js";
 //crea la aplicacion
@@ -37,7 +38,8 @@ app.use(express.static("public"));
 
 //routing
 app.use("/", routerInicio);
-//app.use('/', productoRoutes);
+app.use('/', productoRoutes);
+app.use('/', usuarioRouter);
 // stylos crud
 app.use('/css', express.static('public/css'));
 
