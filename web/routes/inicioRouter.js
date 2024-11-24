@@ -1,5 +1,5 @@
 import express from "express";
-import { xbox , play , nin , con , inicio , admin } from "../controllers/paginas.js";
+import { xbox , play , nin , con , inicio , admin, muestra } from "../controllers/paginas.js";
 import {inicioSesion, signLink, signIn, confirmacionRegistro, logIn} from "../controllers/Credenciales/sesionController.js"
 
 const routerInicio = express.Router();
@@ -11,6 +11,7 @@ routerInicio.post('/signIn', signIn);           //Operacion de registro de usuar
 routerInicio.get('/confirmacion/:token', confirmacionRegistro);    //Confirmacion de registro
 routerInicio.post('/logIn' , logIn);            //Operacion de inicio de sesion
 
+routerInicio.get('/usu' ,muestra);                //Pagina de usuario
 routerInicio.get('/ad' ,admin);                //Pagina de xbox
 routerInicio.get('/xbox' ,xbox);                //Pagina de xbox
 routerInicio.get('/play' ,play);                //Pagina de xbox

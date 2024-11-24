@@ -64,6 +64,21 @@ const nin = async (req, res) => {
     }
 };
 
+const muestra = async (req, res) => {
+    try {
+        // Obtener solo 4 productos de la base de datos
+        const produc = await Productos.findAll({
+            limit: 12, // Limita a 4 productos
+        });
+
+        // Renderizar la vista y pasar los productos
+        res.render('user/inicioUser', { produc });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Hubo un error al obtener los productos");
+    }
+};
+
 const xbox = async (req, res) => {
     try {
         // Recuperar videojuegos de la base de datos
@@ -115,4 +130,4 @@ const con = async (req, res) => {
         res.status(500).send("Error interno del servidor");
     }
 };
-export { play, xbox, nin , con, log, sing, inicio , admin};
+export { play, xbox, nin , con, log, sing, inicio , admin , muestra};
