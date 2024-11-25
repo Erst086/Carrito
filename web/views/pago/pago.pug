@@ -20,8 +20,8 @@ if errores
         input(type="hidden" name="_csrf" value=csrf)
         label.form-label.m-3(for='metodo') Ingresa método de pago
         select#metodo.form-control(name="metodo")
-            option(value="tarjeta") Tarjeta
-            option(value="..") ..
+          each opcion in opcionesPago
+            option(value=opcion.id_datopago) #{opcion.beneficiario}
         label.form-label.m-3(for='usuario') ¿No tienes una tarjeta registrada? 
         a.btn.btn-primary(href='/metodo') Añade tarjeta
         label.form-label.m-3(for='text') Resumen de la compra
