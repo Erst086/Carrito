@@ -1,0 +1,30 @@
+doctype html
+html(lang="es")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title INGRESAR
+        link(rel="stylesheet", href="/css/bootstrap.css")
+        link(rel="stylesheet", href="/css/style.css")
+        script(src="/js/bootstrap.bundle.js")
+        script(src="/js/pooper.min.js")
+a.btn-regresar(href='/') Regresar
+if errores
+  div(class="row justify-content-center text-bg-danger" )
+    div(class="col-md-5")
+      each er in errores
+        h1(class="fw-bold fs-6")=er.msg
+.d-flex.justify-content-center.align-items-center.vh-100
+  form(style='width: 21rem; height: 29rem;' action="/logIn" method="POST" noValidate)
+    .m-3.mb-2
+        input(type="hidden" name="_csrf" value=csrf)
+        label.form-label.m-3(for='metodo') Ingresa método de pago
+        select#metodo.form-control(name="metodo")
+            option(value="tarjeta") Tarjeta
+            option(value="..") ..
+        label.form-label.m-3(for='usuario') ¿No tienes una tarjeta registrada? 
+        a.btn.btn-primary(href='/metodo') Añade tarjeta
+        label.form-label.m-3(for='text') Resumen de la compra
+        input#numero.form-control(type='text'  name="numero")
+        br
+        button.btn.btn-primary(type='submit') Pagar
