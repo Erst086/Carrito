@@ -13,7 +13,7 @@ const mailRegistro = async (info) =>{
     });
     const {nombre, correo, token} = info;
     await transport.sendMail({
-            from: 'joseplascencia346@aragon.unam.mx',
+            from: 'pruebasaws60@gmail.com',
             to: correo,
             subject: 'Registro',
             html:`
