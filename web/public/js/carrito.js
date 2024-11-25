@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     const carrito = document.querySelector('#lista-carrito tbody');
     const vaciarCarritoBtn = document.querySelector('#vaciar-carrito');
-    let itemsCarrito = [];
+    
+    // Recuperar el carrito almacenado previamente en localStorage
+    let itemsCarrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
     // Registrar eventos
     registrarEventosAgregar();
@@ -9,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (vaciarCarritoBtn) {
         vaciarCarritoBtn.addEventListener('click', () => {
             itemsCarrito = [];
+            localStorage.setItem('carrito', JSON.stringify(itemsCarrito)); // Actualizar el carrito en localStorage
             renderCarrito();
         });
     }
@@ -40,16 +43,12 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Verificar si el producto ya está en el carrito
-        const indice = itemsCarrito.findIndex(item => item.id === producto.id);
-        if (indice !== -1) {
-            // Si existe, incrementar cantidad
-            itemsCarrito[indice].cantidad++;
-        } else {
-            // Si no existe, agregarlo al carrito
-            itemsCarrito.push(producto);
-        }
+        // Agregar el producto al carrito
+        itemsCarrito.push(producto);
 
+        // Guardar el carrito en localStorage para persistencia entre recargas de página
+        localStorage.setItem('carrito', JSON.stringify(itemsCarrito));
+        
         renderCarrito();
         console.log(itemsCarrito);
     }
@@ -86,6 +85,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function eliminarProducto(e) {
         const id = e.target.dataset.id;
         itemsCarrito = itemsCarrito.filter(producto => producto.id !== id);
+
+        // Actualizar el carrito en localStorage
+        localStorage.setItem('carrito', JSON.stringify(itemsCarrito));
+
         renderCarrito();
     }
+
+    // Renderizar el carrito al cargar la página
+    renderCarrito();
 });
