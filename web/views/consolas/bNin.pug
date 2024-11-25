@@ -26,4 +26,7 @@ html(lang="es")
           .card-body
             h5.card-title=`${pro.nombre}`
             p.card-text=`${pro.precio.toFixed(2)}`
-            a.btn.btn-primary(href='/log') Añadir al carrito
+            if userLoggedIn
+              a.btn.btn-primary(href=`/user/agregarCarrito/${pro.id}`) Añadir al carrito
+            else
+              a.btn.btn-secondary(href='/logIn') Inicia sesión para comprar

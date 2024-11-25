@@ -20,10 +20,13 @@ html(lang="es")
   .row(style='gap: 2rem; padding: 20px;')
     each pro in productos
       .col-md-2
-        .card(style='width: 14rem; height: 23rem;')
+        .card(style='width: 14rem; height: 24rem;')
           h1 
           img.card-img-top(src='/img/ds.jpg' alt='...' style='width: 10rem; height: 12rem;')
           .card-body
             h5.card-title=`${pro.nombre}`
             p.card-text=`${pro.precio.toFixed(2)}`
-            a.btn.btn-primary(href='/log') Añadir al carrito
+            if userLoggedIn
+              a.btn.btn-primary(href=`/user/agregarCarrito/${pro.id}`) Añadir al carrito
+            else
+              a.btn.btn-secondary(href='/logIn') Inicia sesión para comprar
