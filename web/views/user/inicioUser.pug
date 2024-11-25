@@ -42,7 +42,7 @@ html(lang="es")
                     .card-body
                         h5.card-title=`${pro.nombre}`
                         p.card-text=`${pro.precio.toFixed(2)}`
-                        a.btn.btn-primary(href='/log') Añadir al carrito
+                        button.btn.btn-primary.agregar-carrito(data-id=`${pro.id}` data-nombre=`${pro.nombre}` data-precio=`${pro.precio}` data-img='/img/ds.jpg') Añadir al carrito
 
   
 
