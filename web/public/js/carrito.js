@@ -1,15 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     const carrito = document.querySelector('#lista-carrito tbody');
-    const botonesAgregar = document.querySelectorAll('.agregar-carrito');
     const vaciarCarritoBtn = document.querySelector('#vaciar-carrito');
     let itemsCarrito = [];
 
-    // Registrar los eventos
-    if (botonesAgregar.length) {
-        botonesAgregar.forEach(boton => {
-            boton.addEventListener('click', agregarAlCarrito);
-        });
-    }
+    // Registrar eventos
+    registrarEventosAgregar();
 
     if (vaciarCarritoBtn) {
         vaciarCarritoBtn.addEventListener('click', () => {
@@ -18,28 +13,40 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function registrarEventosAgregar() {
+        const botonesAgregar = document.querySelectorAll('.agregar-carrito');
+        if (botonesAgregar.length) {
+            botonesAgregar.forEach(boton => {
+                boton.removeEventListener('click', agregarAlCarrito); // Evitar duplicar eventos
+                boton.addEventListener('click', agregarAlCarrito);
+            });
+        }
+    }
+
     function agregarAlCarrito(e) {
         const boton = e.target;
+
+        // Crear un objeto del producto con los datos del botón
         const producto = {
             id: boton.dataset.id,
             nombre: boton.dataset.nombre,
-            precio: boton.dataset.precio,
+            precio: parseFloat(boton.dataset.precio), // Convertir precio a número
             imagen: boton.dataset.img,
             cantidad: 1,
         };
 
+        if (!producto.id || !producto.nombre || !producto.precio || !producto.imagen) {
+            console.error('Faltan datos del producto. Verifica los atributos data-* en el HTML.');
+            return;
+        }
+
         // Verificar si el producto ya está en el carrito
-        const existe = itemsCarrito.some(item => item.id === producto.id);
-        if (existe) {
-            // Incrementar cantidad
-            itemsCarrito = itemsCarrito.map(item => {
-                if (item.id === producto.id) {
-                    item.cantidad++;
-                }
-                return item;
-            });
+        const indice = itemsCarrito.findIndex(item => item.id === producto.id);
+        if (indice !== -1) {
+            // Si existe, incrementar cantidad
+            itemsCarrito[indice].cantidad++;
         } else {
-            // Agregar nuevo producto
+            // Si no existe, agregarlo al carrito
             itemsCarrito.push(producto);
         }
 
@@ -54,9 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const fila = document.createElement('tr');
             fila.innerHTML = `
-                <td><img class="carrito-img" src="${imagen}" alt="Imagen"></td>
+                <td><img class="carrito-img" src="${imagen}" alt="Imagen de ${nombre}" width="50"></td>
                 <td>${nombre}</td>
-                <td>${precio}</td>
+                <td>$${precio.toFixed(2)}</td>
                 <td>${cantidad}</td>
                 <td><a href="#" class="borrar-producto" data-id="${id}">X</a></td>
             `;
