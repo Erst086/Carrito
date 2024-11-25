@@ -15,7 +15,7 @@ if errores
       each er in errores
         h1(class="fw-bold fs-6")=er.msg
 .d-flex.justify-content-center.align-items-center.vh-100
-  form(style='width: 21rem; height: 29rem;' action="/logIn" method="POST" noValidate)
+  form(style='width: 50rem; height: 29rem;' action="/logIn" method="POST" noValidate)
     .m-3.mb-2
         input(type="hidden" name="_csrf" value=csrf)
         label.form-label.m-3(for='metodo') Ingresa método de pago
