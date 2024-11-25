@@ -27,7 +27,10 @@ html(lang="es")
                 .card-body
                   h5.card-title=`${con.nombre}`
                   p.card-text=`${con.precio.toFixed(2)}`
-                  a.btn.btn-primary.mb-2(href='/user/agregarCarrito') Añadir al carrito
+                  if userLoggedIn
+                    a.btn.btn-primary(href=`/user/agregarCarrito/${pro.id}`) Añadir al carrito
+                  else
+                    a.btn.btn-secondary(href='/logIn') Inicia sesión para comprar
         else
           p.text-muted No hay productos disponibles.
 
@@ -42,7 +45,10 @@ html(lang="es")
                 .card-body
                   h5.card-title=`${con.nombre}`
                   p.card-text=`${con.precio.toFixed(2)}`
-                  a.btn.btn-primary.mb-2(href='/user/agregarCarrito') Añadir al carrito
+                  if userLoggedIn
+                    a.btn.btn-primary(href=`/user/agregarCarrito/${pro.id}`) Añadir al carrito
+                  else
+                    a.btn.btn-secondary(href='/logIn') Inicia sesión para comprar
         else
           p.text-muted No hay productos disponibles.
 
@@ -57,7 +63,10 @@ html(lang="es")
                 .card-body
                   h5.card-title=`${con.nombre}`
                   p.card-text=`${con.precio.toFixed(2)}`
-                  a.btn.btn-primary.mb-2(href='/user/agregarCarrito') Añadir al carrito
+                  if userLoggedIn
+                    a.btn.btn-primary(href=`/user/agregarCarrito/${pro.id}`) Añadir al carrito
+                  else
+                    a.btn.btn-secondary(href='/logIn') Inicia sesión para comprar
         else
           p.text-muted No hay productos disponibles.
 

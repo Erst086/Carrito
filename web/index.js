@@ -54,19 +54,3 @@ const port = 2800;
 app.listen(port, ()=>{
     console.log(`Esperando peticiones en el puerto ${port}`);
 });
-//Verificacion Xbox
-app.get('/bXbox', (req, res) => {
-    const userLoggedIn = !!req.user; // Si el usuario está autenticado
-    res.render('bXbox', { productos, userLoggedIn });
-  });
-//Verificacion Playstation
-app.get('/bPlay', (req, res) => {
-    const userLoggedIn = !!req.user; // Si el usuario está autenticado
-    res.render('bPlay', { productos, userLoggedIn });
-  });
-//Verificacion Nintendo
-app.get('/bNin', (req, res) => {
-    const userLoggedIn = !!req.user; // Si el usuario está autenticado
-    res.render('bNin', { productos, userLoggedIn });
-  });
-  
