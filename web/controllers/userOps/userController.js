@@ -77,53 +77,76 @@ const finalizarCompraLink = async (req, res) => {
 
 const finalizarCompra = async (req, res) => {
     //variable de total de compra
-    let totalCompra;
-    //variables de sesion de usuarios
+    let totalCompra = 0;
+    //variables de sesión de usuarios
     const usuario = res.locals.usuario;
     let valido = await validacionFormularioFC(req);
     const { opcionPago } = req.body;
+
     if (!valido.isEmpty()) {
         return res.render("pago/pago", {
             csrf: req.csrfToken(),
             errores: valido.array(),
         });
     }
+
     const itemsCarrito = global.listaObjetos || [];
-    if (itemsCarrito.length == 0){
+    if (itemsCarrito.length == 0) {
         return res.render("pago/pago", {
             csrf: req.csrfToken(),
-            errores: [{msg:'No hay articulos en el carrito'}]
+            errores: [{ msg: 'No hay artículos en el carrito' }],
         });
     }
+
     try {
         // Usar el ID de la opción seleccionada
         if (!opcionPago) {
             return res.status(404).send('Tarjeta no encontrada');
         }
+
         const { id } = usuario; // Extraer el id del usuario
-        const venta = Ventas.create({
+        const venta = await Ventas.create({
             id_usuario: id,
             id_datopago: opcionPago
         });
-        await venta.save();
-        itemsCarrito.forEach(async (objeto) => {
-            item = ProductoVenta.create({
+
+        // Recorrer los artículos del carrito y crear los detalles de la venta
+        for (const objeto of itemsCarrito) {
+            const item = await ProductoVenta.create({
                 id_venta: venta.id_venta,
                 id_producto: objeto.id_producto,
                 cantidad: objeto.cantidad,
                 precio_unidad: objeto.precio,
                 subtotal: objeto.cantidad * objeto.precio,
-            })
-        await item.save();
-        totalCompra = totalCompra + item.subtotal;
-        });
+            });
+
+            totalCompra += item.subtotal;
+
+            // Actualizar el stock del producto
+            const producto = await Productos.findByPk(objeto.id_producto);
+            if (producto) {
+                await producto.update({
+                    stock: producto.stock - objeto.cantidad,
+                });
+            }
+        }
+
+        // Actualizar el total de la venta
         await venta.update({ total_venta: totalCompra });
-        await venta.save();
+
+        // Renderizar la confirmación
+        res.render("pago/confirmacionCompra", {
+            pagina: "Compra finalizada",
+            mensaje: "Gracias por tu compra. Tu pedido ha sido procesado exitosamente.",
+            csrf: req.csrfToken(),
+        });
+
     } catch (error) {
         console.error('Error al procesar la compra:', error);
         res.status(500).send('Error interno del servidor');
     }
 };
+
 
 const agregarCarrito = async (req, res) => {
     
