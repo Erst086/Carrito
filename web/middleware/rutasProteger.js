@@ -22,5 +22,5 @@ const rutaProteger=async(req,res,next)=>{
         return res.clearCookie('_token').redirect('/');
     }
     next();
-}
-export default rutaProteger
+};
+export default rutaProteger;

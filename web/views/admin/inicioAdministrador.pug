@@ -12,10 +12,10 @@ html(lang="es")
         script(src="codigo.js")
         header.navbar.bg-body-tertiary
             .container
-                a.navbar-brand.letra.ms-5(href="/admin") GameStart
+                a.navbar-brand.letra.ms-5(href="/admin/") GameStart
                 .d-flex.align-items-center.gap-3
-                    h4=nombre
-                    a.btn.btn-outline-success.me-2(href="/") Salir
+                    h4 Bienvenido #{usuario.nombre}
+                    a.btn.btn-outline-success.me-2(href="/logOut") Salir
         .container
             .row.justify-content-center.align-items-center.p-5
                 .col-md-6.d-flex.justify-content-center
@@ -23,7 +23,7 @@ html(lang="es")
                         img.card-img-top(src='/img/lista.jpg' alt='...' style='width: 12rem; height: 12rem;')
                         .card-body
                             h5.card-title Lista de productos
-                            a.btn.btn-primary(href='/productos') Ingresar
+                            a.btn.btn-primary(href='/admin/productos') Ingresar
 
                 .col-md-6.d-flex.justify-content-center
                     .card(style='width: 18rem; height: 21rem;')
@@ -32,6 +32,6 @@ html(lang="es")
                         img.card-img-top(src='/img/usu.jpg' alt='...' style='width: 10rem; height: 10rem;')
                         .card-body
                             h5.card-title Lista de usuarios
-                            a.btn.btn-primary(href='/usuarios') Ingresar
+                            a.btn.btn-primary(href='/admin/usuarios') Ingresar
 
         

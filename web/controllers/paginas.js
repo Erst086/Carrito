@@ -1,4 +1,3 @@
-import Usuarios from "../models/Usuario.js";
 import Productos from "../models/Producto.js"; // Modelo para productos
 import { check, validationResult } from "express-validator";
 import { Op } from "sequelize";
@@ -7,25 +6,6 @@ const inicio = (req, res) => {
         pagina: "Bienvenido",
     });
 };
-
-const admin = (req, res) => {
-    res.render("admin/inicioAdministrador", {
-        pagina: "Bienvenido",
-    });
-};
-
-const log = (req, res) => {
-    res.render("credenciales/login", {
-        pagina: "Inicio xbox",
-    });
-};
-
-const sing = (req, res) => {
-    res.render("credenciales/signin", {
-        pagina: "Inicio xbox",
-    });
-};
-
 const play = async (req, res) => {
     try {
         // Recuperar videojuegos de la base de datos
@@ -130,4 +110,4 @@ const con = async (req, res) => {
         res.status(500).send("Error interno del servidor");
     }
 };
-export { play, xbox, nin , con, log, sing, inicio , admin , muestra};
+export { play, xbox, nin, con, inicio, muestra};

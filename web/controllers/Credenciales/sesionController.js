@@ -1,21 +1,20 @@
 import Usuarios from "../../models/Usuario.js"
 import {check, validationResult} from 'express-validator';
 import {idGenera, JWTGenera} from '../../helpers/tokens.js'
-import {Op, Sequelize} from 'sequelize'
 import {mailRegistro} from '../../helpers/mails.js'
-//import dotenv from 'dotenv';
-//import csrf from "csurf";
-
+//renderiza el formulario de inicio de sesion
 const inicioSesion = (req, res) => {
     res.render("credenciales/login", {
         csrf: req.csrfToken(),
     });
 };
+//enlace a pagina de registro
 const signLink = (req,res) =>{
     res.render("credenciales/signin",{
         csrf: req.csrfToken(),
     });
 };
+//registro de usuraios
 const signIn = async (req, res) => {
     let valido = await validacionFormulario(req);
     if (!valido.isEmpty()) {
@@ -43,10 +42,11 @@ const signIn = async (req, res) => {
     //mostrar mensaje de confirmacions
     res.render("credenciales/confirmacion", {
         pagina: "Usuario se registro exitosamente",
-        mensaje: "Revise su correo electronico para confirmar el registro",
+        mensaje: "Revice su correo electronico para confirmar el registro",
         csrf: req.csrfToken(),
     });
 };
+//se confirma el registro del usuario
 const confirmacionRegistro = async (req, res) => {
     const {token} =req.params;
     //token valido
@@ -68,6 +68,7 @@ const confirmacionRegistro = async (req, res) => {
         mensaje:"El registro se termino exitosamente puede comenzar a hacer uso de su cuenta",
     });
 }
+//Operacion al iniciar sesion
 const logIn = async (req, res) => {
     let valido = await validacionFormularioInicio(req);
     if (!valido.isEmpty()) {
@@ -102,16 +103,41 @@ const logIn = async (req, res) => {
     //se actualiza el ultimo acceso
     user.ultimo_acceso = new Date(); // Asigna la fecha y hora actual
     await user.save();
+    // Guardar datos del usuario en la sesión
+    req.session.usuario = {
+        id: user.id_usuario,
+        nombre: user.nombre,
+        correo: user.correo,
+        rol: user.id_rol
+    };
     //JWT
     const token=JWTGenera(user);
-    console.log(user);
-    console.log(token);
     //crean jsonwebtoken
-    return res.cookie('_token',token,{
-    httpOnly:true,
-    //maxAge:60*1000
-    //secure:true
-    }).redirect('/');
+    if (user.id_rol === 1) {
+        return res.cookie('_token', token, {
+            httpOnly: true,
+        }).redirect('/admin/'); // Redirige al inicio del administrador
+    } else if (user.id_rol === 2) {
+        return res.cookie('_token', token, {
+            httpOnly: true,
+        }).redirect('/user/'); // Redirige al inicio del usuario
+    } else {
+        // Manejar otros roles o un caso inesperado
+        return res.render("error", {
+            mensaje: "Rol no reconocido. Por favor, contacte con el administrador."
+        });
+    }
+};
+//Operacion de cerrar sesion
+const logOut = async (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            console.log(err);
+            return res.redirect('/');
+        }
+        res.clearCookie('connect.sid'); // Limpia la cookie de sesión
+        res.redirect('/');
+    });
 };
 async function validacionFormularioInicio(req) {
     await check("correo")
@@ -149,4 +175,4 @@ async function validacionFormulario(req) {
     let salida = validationResult(req);
     return salida;
 };
-export {inicioSesion, signLink, signIn, confirmacionRegistro, logIn};
+export {inicioSesion, signLink, signIn, confirmacionRegistro, logIn, logOut};

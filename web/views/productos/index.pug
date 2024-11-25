@@ -5,9 +5,9 @@ html
     link(rel="stylesheet" href="/css/CRUDstyles.css")
     link(rel="stylesheet", href="/css/bootstrap.css")
   body
-    a.btn.btn-primary(href='/ad') Regresar
+    a.btn.btn-primary(href='/admin/') Regresar
     h1.text-center Lista de Productos
-    a.btn.btn-primary(href="/productos/crear" class="nuevo-producto") Nuevo Producto
+    a.btn.btn-primary(href="/admin/productos/crear" class="nuevo-producto") Nuevo Producto
     table
       thead
         tr
@@ -27,8 +27,8 @@ html
               td= producto.precio
               td= producto.stock
               td
-                a(href=`/productos/editar/${producto.id_producto}` class="editar") Editar
-                form(action=`/productos/eliminar/${producto.id_producto}` method="POST" style="display:inline;")
+                a(href=`/admin/productos/editar/${producto.id_producto}` class="editar") Editar
+                form(action=`/admin/productos/eliminar/${producto.id_producto}` method="POST" style="display:inline;")
                   button(type="submit" class="eliminar") Eliminar
         else
           tr
