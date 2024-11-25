@@ -8,7 +8,7 @@ html(lang="es")
         link(rel="stylesheet", href="/css/style.css")
         script(src="/js/bootstrap.bundle.js")
         script(src="/js/pooper.min.js")
-        a.btn-regresar(href='/pago') Regresar
+        a.btn-regresar(href='/user/finalizarCompra') Regresar
         if errores
           div(class="row justify-content-center text-bg-danger" )
             div(class="col-md-5") 
@@ -24,6 +24,6 @@ html(lang="es")
               input#usuario.form-control(type='text' placeholder='dd/dd', name="caducidad")
               label.form-label.m-3(for='beneficiario') Titular de la tarjeta
               input#usuario.form-control(type='text' placeholder='Ingrese al titular', name="beneficiario")
-              label.form-label.m-3(for='cv') Código de seguridad(CCV)
-              input#password.form-control.mb-3(type='password' placeholder='CCV', name="cv")
+              label.form-label.m-3(for='cvv') Código de seguridad(CCV)
+              input#password.form-control.mb-3(type='password' placeholder='CCV', name="cvv")
               button.btn.btn-primary(type='submit') Guardar

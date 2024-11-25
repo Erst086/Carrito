@@ -43,7 +43,7 @@ const registrarTarjeta = async (req, res) => {
     const datP = DatosPago.create({
         id_usuario: id,
         numero_tarjeta: req.body.numeroTarjeta,
-        cv: req.body.cvv,
+        cvv: req.body.cvv,
         beneficiario: req.body.beneficiario,
     });
     await datP.save();
