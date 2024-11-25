@@ -116,8 +116,9 @@ const finalizarCompra = async (req, res) => {
             })
         await item.save();
         totalCompra = totalCompra + item.subtotal;
-        
         });
+        await venta.update({ total_venta: totalCompra });
+        await venta.save();
     } catch (error) {
         console.error('Error al procesar la compra:', error);
         res.status(500).send('Error interno del servidor');
