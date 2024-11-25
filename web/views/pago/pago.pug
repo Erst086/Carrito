@@ -15,7 +15,7 @@ if errores
       each er in errores
         h1(class="fw-bold fs-6")=er.msg
 .d-flex.justify-content-center.align-items-center.vh-100
-  form(style='width: 50rem; height: 29rem;' action="/logIn" method="POST" noValidate)
+  form(style='width: 50rem; height: 29rem;' action="opcionesPago" method="POST" noValidate)
     .m-3.mb-2
         input(type="hidden" name="_csrf" value=csrf)
         label.form-label.m-3(for='metodo') Ingresa método de pago
@@ -23,7 +23,7 @@ if errores
             option(value="tarjeta") Tarjeta
             option(value="..") ..
         label.form-label.m-3(for='usuario') ¿No tienes una tarjeta registrada? 
-        a.btn.btn-primary(href='/user/registrarTarjeta') Añade tarjeta
+        a.btn.btn-primary(href='/metodo') Añade tarjeta
         label.form-label.m-3(for='text') Resumen de la compra
         input#numero.form-control(type='text'  name="numero")
         br

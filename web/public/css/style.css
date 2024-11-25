@@ -226,4 +226,10 @@ form {
 .btn-regresar:hover {
     background-color: #0056b3; /* Efecto al pasar el mouse */
 }
+.carrito-img {
+    width: 50px;  /* Ajusta el ancho */
+    height: 50px; /* Ajusta la altura */
+    object-fit: cover; /* Ajusta cómo se muestra la imagen para evitar distorsión */
+    border-radius: 5px; /* (Opcional) Bordes redondeados */
+}
 

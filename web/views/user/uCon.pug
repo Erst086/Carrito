@@ -10,10 +10,9 @@ html(lang="es")
     script(src="/js/pooper.min.js")
     body
       //- Renderiza un header diferente basado en la variable `userLoggedIn`
-      if userLoggedIn
-        include ../layout/headerUsuario.pug
-      else
-        include ../layout/header.pug
+
+      include ../layout/headerUsuario.pug
+
 
     .container
       //- Sección PlayStation
@@ -27,10 +26,7 @@ html(lang="es")
                 .card-body
                   h5.card-title=`${con.nombre}`
                   p.card-text=`${con.precio.toFixed(2)}`
-                  if userLoggedIn
-                    button.btn.btn-primary.agregar-carrito(data-id=`${con.id}` data-nombre=`${con.nombre}` data-precio=`${con.precio}` data-img='/img/ds.jpg') Añadir al carrito
-                  else
-                    a.btn.btn-secondary(href='/logIn') Inicia sesión para comprar         
+                  a.btn.btn-primary.input.agregar-carrito(href='') Añadir al carrito
         else
           p.text-muted No hay productos disponibles.
 
@@ -45,10 +41,7 @@ html(lang="es")
                 .card-body
                   h5.card-title=`${con.nombre}`
                   p.card-text=`${con.precio.toFixed(2)}`
-                  if userLoggedIn
-                    button.btn.btn-primary.agregar-carrito(data-id=`${con.id}` data-nombre=`${con.nombre}` data-precio=`${con.precio}` data-img='/img/ds.jpg') Añadir al carrito
-                  else
-                    a.btn.btn-secondary(href='/logIn') Inicia sesión para comprar
+                  a.btn.btn-primary.input.agregar-carrito(href='') Añadir al carrito
         else
           p.text-muted No hay productos disponibles.
 
@@ -63,10 +56,8 @@ html(lang="es")
                 .card-body
                   h5.card-title=`${con.nombre}`
                   p.card-text=`${con.precio.toFixed(2)}`
-                  if userLoggedIn
-                    button.btn.btn-primary.agregar-carrito(data-id=`${con.id}` data-nombre=`${con.nombre}` data-precio=`${con.precio}` data-img='/img/ds.jpg') Añadir al carrito
-                  else
-                    a.btn.btn-secondary(href='/logIn') Inicia sesión para comprar
+                  a.btn.btn-primary.input.agregar-carrito(href='') Añadir al carrito
+              
         else
           p.text-muted No hay productos disponibles.
 

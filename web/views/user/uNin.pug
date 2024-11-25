@@ -10,11 +10,7 @@ html(lang="es")
         script(src="/js/pooper.min.js")
         script(src="codigo.js")
     body(class='p')
-      //- Renderiza un header diferente basado en la variable `userLoggedIn`
-      if userLoggedIn
         include ../layout/headerUsuario.pug
-      else
-        include ../layout/header.pug
 
 .container
   .row(style='gap: 2rem; padding: 20px;')
@@ -26,7 +22,4 @@ html(lang="es")
           .card-body
             h5.card-title=`${pro.nombre}`
             p.card-text=`${pro.precio.toFixed(2)}`
-            if userLoggedIn
-              button.btn.btn-primary.agregar-carrito(data-id=`${pro.id}` data-nombre=`${pro.nombre}` data-precio=`${pro.precio}` data-img='/img/ds.jpg') Añadir al carrito
-            else
-              a.btn.btn-secondary(href='/logIn') Inicia sesión para comprar
+            a.btn.btn-primary.input.agregar-carrito(href=`/user/agregarCarrito/${pro.id}`) Añadir al carrito

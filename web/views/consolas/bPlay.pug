@@ -11,7 +11,7 @@ html(lang="es")
         script(src="codigo.js")
     body(class='p')
       //- Renderiza un header diferente basado en la variable `userLoggedIn`
-      if #{usuario}
+      if userLoggedIn
         include ../layout/headerUsuario.pug
       else
         include ../layout/header.pug
@@ -27,6 +27,6 @@ html(lang="es")
             h5.card-title=`${pro.nombre}`
             p.card-text=`${pro.precio.toFixed(2)}`
             if userLoggedIn
-              a.btn.btn-primary(href=`/user/agregarCarrito/${pro.id}`) Añadir al carrito
+              button.btn.btn-primary.agregar-carrito(data-id=`${pro.id}` data-nombre=`${pro.nombre}` data-precio=`${pro.precio}` data-img='/img/ds.jpg') Añadir al carrito
             else
               a.btn.btn-secondary(href='/logIn') Inicia sesión para comprar

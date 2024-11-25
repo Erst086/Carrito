@@ -1,4 +1,3 @@
-alert("conexion a carrito");
 document.addEventListener('DOMContentLoaded', () => {
     const carrito = document.querySelector('#lista-carrito tbody');
     const botonesAgregar = document.querySelectorAll('.agregar-carrito');
@@ -55,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const fila = document.createElement('tr');
             fila.innerHTML = `
-                <td><img src="${imagen}" width="50"></td>
+                <td><img class="carrito-img" src="${imagen}" alt="Imagen"></td>
                 <td>${nombre}</td>
                 <td>${precio}</td>
                 <td>${cantidad}</td>
