@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 import db from '../config/db.js';
 import Usuarios from './Usuario.js';
-import DatosPago from './DatosPago.js';
+import DatosPago from './DatoPago.js';
 
 const Ventas = db.define('ventas', {
     id_venta: {

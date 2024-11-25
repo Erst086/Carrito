@@ -4,8 +4,6 @@ import Productos from "../../models/Producto.js";
 import ProductoVenta from "../../models/ProductosVenta.js";
 import Ventas from "../../models/Venta.js";
 import Usuarios from "../../models/Usuario.js";
-//variables de sesion de usuarios
-const usuario = res.locals.usuario;
 //renderiza el formulario de inicio de sesion
 const inicio = async (req, res) => {
     try {
@@ -32,6 +30,8 @@ const registrarTarjetaLink = async (req, res) => {
 };
 
 const registrarTarjeta = async (req, res) => {
+    //variables de sesion de usuarios
+    const usuario = res.locals.usuario;
     let valido = await validacionFormularioRT(req);
     if (!valido.isEmpty()) {
         return res.render("pago/metodo", {
@@ -56,6 +56,8 @@ const registrarTarjeta = async (req, res) => {
 };
 
 const finalizarCompraLink = async (req, res) => {
+    //variables de sesion de usuarios
+    const usuario = res.locals.usuario;
     try {
         const { id } = usuario; // Extraer el id del usuario
         // Obtén las opciones desde la base de datos
@@ -74,6 +76,8 @@ const finalizarCompraLink = async (req, res) => {
 };
 
 const finalizarCompra = async (req, res) => {
+    //variables de sesion de usuarios
+    const usuario = res.locals.usuario;
     let valido = await validacionFormularioFC(req);
     const { opcionPago } = req.body;
     if (!valido.isEmpty()) {

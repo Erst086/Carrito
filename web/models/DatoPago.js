@@ -36,6 +36,6 @@ const DatosPago = db.define('datos_pago', {
 });
 
 Usuarios.hasMany(DatosPago, { foreignKey: 'id_usuario' });
-DatosPago.belongsTo(Usuario, { foreignKey: 'id_usuario' });
+DatosPago.belongsTo(Usuarios, { foreignKey: 'id_usuario' });
 
 export default DatosPago;
