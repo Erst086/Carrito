@@ -76,6 +76,8 @@ const finalizarCompraLink = async (req, res) => {
 };
 
 const finalizarCompra = async (req, res) => {
+    //variable de total de compra
+    let totalCompra;
     //variables de sesion de usuarios
     const usuario = res.locals.usuario;
     let valido = await validacionFormularioFC(req);
@@ -111,11 +113,13 @@ const finalizarCompra = async (req, res) => {
                 cantidad: objeto.cantidad,
                 precio_unidad: objeto.precio,
                 subtotal: objeto.cantidad * objeto.precio,
-            })  
-            await item.save();
-          });
+            })
+        await item.save();
+        totalCompra = totalCompra + item.subtotal;
+        
+        });
     } catch (error) {
-        console.error('Error al procesar la selección:', error);
+        console.error('Error al procesar la compra:', error);
         res.status(500).send('Error interno del servidor');
     }
 };
