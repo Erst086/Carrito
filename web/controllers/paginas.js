@@ -110,14 +110,4 @@ const con = async (req, res) => {
         res.status(500).send("Error interno del servidor");
     }
 };
-const pago = (req, res) => {
-    res.render("pago/pago", {
-        pagina: "Bienvenido",
-    });
-};
-const metodo = (req, res) => {
-    res.render("pago/metodo", {
-        pagina: "Bienvenido",
-    });
-};
-export { play, xbox, nin, con, inicio, muestra,pago,metodo};
+export { play, xbox, nin, con, inicio, muestra};

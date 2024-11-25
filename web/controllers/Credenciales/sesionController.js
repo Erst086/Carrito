@@ -24,13 +24,13 @@ const signIn = async (req, res) => {
         });
     }
     const user = await Usuarios.create({
-    nombre: req.body.nombre,
-    ap_paterno: req.body.apPater,
-    ap_materno: req.body.apMater,
-    correo:req.body.correo,
-    contrasenia: req.body.password,
-    id_rol:2,
-    token:idGenera()
+        nombre: req.body.nombre,
+        ap_paterno: req.body.apPater,
+        ap_materno: req.body.apMater,
+        correo:req.body.correo,
+        contrasenia: req.body.password,
+        id_rol:2,
+        token:idGenera()
     });
     await user.save();
     //manda correo

@@ -1,13 +1,14 @@
+//modificar con respecto a los elementos del carrito
 const carrito = document.querySelector('#carrito');
 const contenedorCarrito = document.querySelector('#lista-carrito tbody')
-const vaciarCarritoB = document.querySelector('#vaciar-carrito')
-const listaLibros = document.querySelector('#lista-libros')
+const vaciarCarrito = document.querySelector('#vaciar-carrito')
+const listaproductos = document.querySelector('#lista-productos')
 let itemsCarrito = [];
 
 registrarListener();
 
 function registrarListener() {
-    listaLibros.addEventListener('click', agregarLibro)
+    listaproductos.addEventListener('click', agregarLibro)
 
     //eliminar libro
     carrito.addEventListener(`click`,eliminarLibro)
@@ -74,7 +75,6 @@ function HTMLCarrito(){
         <td>   
             <img src="${imagen}" width="100">
         </td>
-
         <td> ${nombre} </td>
         <td> ${precio} </td>
         <td> ${cantidad} </td>
