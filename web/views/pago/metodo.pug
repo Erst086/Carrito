@@ -11,19 +11,19 @@ html(lang="es")
         a.btn-regresar(href='/pago') Regresar
         if errores
           div(class="row justify-content-center text-bg-danger" )
-            div(class="col-md-5")
+            div(class="col-md-5") 
               each er in errores
                 h1(class="fw-bold fs-6")=er.msg
         .d-flex.justify-content-center.align-items-center.vh-100
           form(style='width: 21rem; height: 29rem;' action="/logIn" method="POST" noValidate)
             .m-3.mb-2
               input(type="hidden" name="_csrf" value=csrf)
-              label.form-label.m-3(for='numero') Número de tarjeta
-              input#usuario.form-control(type='text' placeholder='Ingrese su número de targeta', name="numero")
+              label.form-label.m-3(for='numero_tarjeta') Número de tarjeta
+              input#usuario.form-control(type='text' placeholder='Ingrese su número de targeta', name="numero_tarjeta")
               label.form-label.m-3(for='caducidad') Fecha de caducidad
               input#usuario.form-control(type='text' placeholder='dd/dd', name="caducidad")
-              label.form-label.m-3(for='titular') Titular de la tarjeta
-              input#usuario.form-control(type='text' placeholder='Ingrese al titular', name="titular")
-              label.form-label.m-3(for='codigo') Código de seguridad(CCV)
-              input#password.form-control.mb-3(type='password' placeholder='CCV', name="codigo")
+              label.form-label.m-3(for='beneficiario') Titular de la tarjeta
+              input#usuario.form-control(type='text' placeholder='Ingrese al titular', name="beneficiario")
+              label.form-label.m-3(for='cv') Código de seguridad(CCV)
+              input#password.form-control.mb-3(type='password' placeholder='CCV', name="cv")
               button.btn.btn-primary(type='submit') Guardar
