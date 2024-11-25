@@ -5,29 +5,6 @@ INSERT INTO roles (nombre, descripcion) VALUES
     ('Administrador', 'Rol con permisos completos para gestionar el sistema'),
     ('Cliente', 'Usuario regular que realiza compras');
 
--- Insertar usuarios
-INSERT INTO usuarios (nombre, ap_paterno, ap_materno, correo, contrasenia, id_rol) VALUES
-    ('Juan', 'Pérez', 'García', 'juan.perez@example.com', 'password123', 1),
-    ('María', 'López', 'Martínez', 'maria.lopez@example.com', 'password123', 1),
-    ('Carlos', 'Ruiz', 'Hernández', 'carlos.ruiz@example.com', 'password123', 1),
-    ('Laura', 'Gómez', 'Sánchez', 'laura.gomez@example.com', 'password123', 1),
-    ('Ana', 'Jiménez', 'Cano', 'ana.jimenez@example.com', 'password123', 2),
-    ('Luis', 'Martín', 'Blanco', 'luis.martin@example.com', 'password123', 2),
-    ('Elena', 'Ortiz', 'Díaz', 'elena.ortiz@example.com', 'password123', 2),
-    ('Pedro', 'Ramos', 'Serrano', 'pedro.ramos@example.com', 'password123', 2),
-    ('Sara', 'Castro', 'Ramírez', 'sara.castro@example.com', 'password123', 2),
-    ('Miguel', 'Vega', 'Romero', 'miguel.vega@example.com', 'password123', 2),
-    ('Carla', 'Domínguez', 'Pardo', 'carla.dominguez@example.com', 'password123', 2),
-    ('Fernando', 'Santos', 'Ortiz', 'fernando.santos@example.com', 'password123', 2),
-    ('Inés', 'Moreno', 'Vidal', 'ines.moreno@example.com', 'password123', 2),
-    ('Alberto', 'Delgado', 'Gil', 'alberto.delgado@example.com', 'password123', 2),
-    ('Marta', 'Vázquez', 'Calvo', 'marta.vazquez@example.com', 'password123', 2),
-    ('Raúl', 'Méndez', 'Peña', 'raul.mendez@example.com', 'password123', 2),
-    ('Rosa', 'Herrera', 'Reyes', 'rosa.herrera@example.com', 'password123', 2),
-    ('Diego', 'Iglesias', 'López', 'diego.iglesias@example.com', 'password123', 2),
-    ('Beatriz', 'Flores', 'Martín', 'beatriz.flores@example.com', 'password123', 2),
-    ('Cristina', 'Silva', 'Soto', 'cristina.silva@example.com', 'password123', 2);
-
 -- Insertar categorías
 INSERT INTO categorias (nombre, descripcion) VALUES
     ('Videojuegos', 'Juegos de diversas plataformas'),
@@ -42,7 +19,6 @@ INSERT INTO plataformas (nombre) VALUES
     ('PSP');
 
 USE carrito;
-
 -- Insertar productos para Xbox
 INSERT INTO productos (nombre, id_categoria, costo, precio, descripcion, stock, id_plataforma) VALUES
     ('Halo Infinite', 1, 40.00, 59.99, 'Juego de acción en primera persona', 100, 1),
@@ -177,11 +153,5 @@ INSERT INTO productos (nombre, id_categoria, costo, precio, descripcion, stock, 
     ('KontrolFreek Thumbsticks', 2, 10.00, 19.99, 'Accesorios para mejorar agarre de controles DualSense', 100, 3);
 
 
--- Insertar datos de pago
-INSERT INTO datos_pago (id_usuario, numero_tarjeta, cvv, fecha_vencimiento, beneficiario) VALUES
-    (1, '1234567812345678', '123', '2025-12-01', 'Juan Pérez'),
-    (2, '2345678923456789', '456', '2026-11-15', 'María López'),
-    (3, '3456789034567890', '789', '2027-10-10', 'Carlos Ruiz'),
-    (4, '4567890145678901', '012', '2024-09-05', 'Laura Gómez');
 
 
