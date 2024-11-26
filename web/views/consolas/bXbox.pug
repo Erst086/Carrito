@@ -22,7 +22,7 @@ html(lang="es")
       .col-md-2
         .card(style='width: 14rem; height: 24rem;')
           h1 
-          img.card-img-top(src='/img/ds.jpg' alt='...' style='width: 10rem; height: 12rem;')
+          img.card-img-top(src=`/img/caratulas/${pro.id_producto}.jpg` alt='...' style='width: 10rem; height: 12rem;')
           .card-body
             h5.card-title=`${pro.nombre}`
             p.card-text=`${pro.precio.toFixed(2)}`
@@ -32,7 +32,7 @@ html(lang="es")
                 input(type="hidden" name="id" value=`${pro.id}`)
                 input(type="hidden" name="nombre" value=`${pro.nombre}`)
                 input(type="hidden" name="precio" value=`${pro.precio}`)
-                input(type="hidden" name="img" value="/img/ds.jpg")
+                input(type="hidden" name="img" value=`/img/caratulas/${pro.id}.jpg`)
                 button.btn.btn-primary(type="submit") Añadir al carrito
             else
               a.btn.btn-secondary(href='/logIn') Inicia sesión para comprar
