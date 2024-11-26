@@ -9,6 +9,7 @@ import Usuarios from "../../models/Usuario.js";
 //renderiza el formulario de inicio de sesion
 const inicio = async (req, res) => {
     try {
+        const carrito =  req.session.carrito || []; 
         // Obtener solo 4 productos de la base de datos
         const produc = await Productos.findAll({
             limit: 12, // Limita a 4 productos
@@ -17,6 +18,7 @@ const inicio = async (req, res) => {
         // Renderizar la vista y pasar los productos
         res.render('user/inicioUser', { 
             produc,
+            carrito,
             csrf: req.csrfToken(), 
         });
     } catch (error) {
