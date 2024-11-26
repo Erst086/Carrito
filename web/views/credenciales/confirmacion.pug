@@ -12,6 +12,9 @@ html(lang="es")
     .d-flex.justify-content-center.align-items-center.vh-100
       form(style='width: 21rem; height: 12rem;' action="/logIn" method="POST" noValidate)
         .m-3.mb-2
-        h4.text-center La creación de tu cuenta se realizo con éxito
+        h4.text-center=pagina
         h3(class="fw-bold fs-6")=mensaje
-        <a class="btn btn-primary" href="/" role="button">Regresar al inicio</a>
+        if userLoggedIn
+          <a class="btn btn-primary" href="/user/" role="button">Regresar al inicio</a>
+        else 
+          <a class="btn btn-primary" href="/" role="button">Regresar al inicio</a>

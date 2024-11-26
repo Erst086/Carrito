@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title Lista de Productos
+    link(rel="stylesheet" href="/css/CRUDstyles.css")
+    link(rel="stylesheet", href="/css/bootstrap.css")
+  body
+    a.btn.btn-primary(href='/admin/ventas') Regresar
+    h1.text-center Lista de ventas
+    table
+      thead
+        tr
+          th Imagen
+          th Precio
+          th Cantidad
+          th Subotal
+      tbody
+        each producto in productosVentas
+          tr
+            td
+              img(src=`/img/caratulas/${producto.id_producto}.jpg` alt='Imagen de producto' width="50")
+            td= producto.nombre
+            td= `$${producto.precio_unidad.toFixed(2)}`
+            td= producto.cantidad
+            td= `$${(producto.precio_unidad * producto.cantidad).toFixed(2)}`
+      tfoot
+        tr
+          td(colspan="4") Total
+          td= `$${productosVentas.reduce((sum, producto) => sum + (producto.precio_unidad * producto.cantidad), 0).toFixed(2)}`    

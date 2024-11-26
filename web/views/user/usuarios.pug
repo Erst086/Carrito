@@ -17,6 +17,7 @@ html
           th Apellido Materno
           th Correo
           th Rol
+          th Ultimo Acceso
       tbody
         if usuarios && usuarios.length
           each usuario in usuarios
@@ -27,6 +28,8 @@ html
               td= usuario.ap_materno
               td= usuario.correo
               td= usuario.id_rol
+              td= new Date(usuario.ultimo_acceso).toISOString().slice(0, 10).replace(/-/g, '/')
+
         else
           tr
             td(colspan="6") No hay usuarios disponibles.

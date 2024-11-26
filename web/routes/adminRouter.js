@@ -5,7 +5,7 @@ import rutaProteger from "../middleware/rutasProteger.js";
 import verificarRol from "../middleware/verificarRol.js";
 import { inicio } from "../controllers/adminOps/adminController.js";
 import { crearProducto, obtenerProductos, obtenerProductoPorId, actualizarProducto, eliminarProducto, } from '../controllers/productosController.js';
-
+import {ventas, Detallesventas} from "../controllers/adminOps/ventasController.js";
 const routerAdmin = express.Router();
 
 routerAdmin.get('/', rutaProteger, verificarRol([1]), inicio);                  //Pagina de inicio para administrador 
@@ -68,4 +68,6 @@ routerAdmin.get('/usuarios', rutaProteger, verificarRol([1]), async (req, res) =
   }
 });
 
+routerAdmin.get('/ventas', rutaProteger, verificarRol([1]), ventas);
+routerAdmin.get('/ventas/detalleVenta/:id_venta', rutaProteger, verificarRol([1]), Detallesventas);
 export default routerAdmin;

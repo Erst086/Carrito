@@ -21,7 +21,7 @@ html(lang="es")
               label.form-label.m-3(for='numero_tarjeta') Número de tarjeta
               input#usuario.form-control(type='text' placeholder='Ingrese su número de targeta', name="numero_tarjeta")
               label.form-label.m-3(for='caducidad') Fecha de caducidad
-              input#usuario.form-control(type='text' placeholder='dd/dd', name="caducidad")
+              input#usuario.form-control(type='text' placeholder='MM/YY', name="caducidad" pattern="(0[1-9]|1[0-2])/\d{2}" title="Formato válido: MM/YY")
               label.form-label.m-3(for='beneficiario') Titular de la tarjeta
               input#usuario.form-control(type='text' placeholder='Ingrese al titular', name="beneficiario")
               label.form-label.m-3(for='cvv') Código de seguridad(CCV)

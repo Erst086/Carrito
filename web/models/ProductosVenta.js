@@ -3,7 +3,7 @@ import db from '../config/db.js';
 import Ventas from './Venta.js';
 import Productos from './Producto.js';
 
-const ProductoVenta = db.define('productos_venta', {
+const ProductoVenta = db.define('productos_ventas', {
     id_productventa: {
         type: DataTypes.INTEGER,
         autoIncrement: true,

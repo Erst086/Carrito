@@ -96,22 +96,27 @@ const finalizarCompraLink = async (req, res) => {
 const finalizarCompra = async (req, res) => {
     // Variable de total de compra
     let totalCompra = 0;
-    
+    const carrito = req.session.carrito || []; 
     // Variables de sesión de usuarios
     const usuario = res.locals.usuario;
     let valido = await validacionFormularioFC(req);
-    const { opcionPago } = req.body;
+    const { metodo } = req.body;
 
+    //validacion de formulario vacio
+    const opcionesPago = await DatosPago.findAll({ where: { id_usuario: usuario.id}, });
     if (!valido.isEmpty()) {
         return res.render("pago/pago", {
+            opcionesPago,
+            carrito,
             csrf: req.csrfToken(),
             errores: valido.array(),
         });
     }
-
-    const carrito = req.session.carrito || []; 
+    //validacion de carrito vacio
     if (carrito.length == 0) {
         return res.render("pago/pago", {
+            opcionesPago,
+            carrito,
             csrf: req.csrfToken(),
             errores: [{ msg: 'No hay artículos en el carrito' }],
         });
@@ -119,14 +124,14 @@ const finalizarCompra = async (req, res) => {
 
     try {
         // Usar el ID de la opción seleccionada
-        if (!opcionPago) {
+        if (!metodo) {
             return res.status(404).send('Tarjeta no encontrada');
         }
 
         const { id } = usuario; // Extraer el id del usuario
         const venta = await Ventas.create({
             id_usuario: id,
-            id_datopago: opcionPago,
+            id_datopago: metodo,
         });
 
         // Recorrer los artículos del carrito y crear los detalles de la venta
@@ -152,7 +157,7 @@ const finalizarCompra = async (req, res) => {
 
         // Actualizar el total de la venta
         await venta.update({ total_venta: totalCompra });
-
+        req.session.carrito = [];
         // Renderiza la confirmación
         res.render("credenciales/confirmacion", {
             pagina: "Compra finalizada",
@@ -166,7 +171,7 @@ const finalizarCompra = async (req, res) => {
 };
 
 async function validacionFormularioFC(req) {
-    await check("tarjeta")
+    await check("metodo")
     .notEmpty()
     .withMessage("Seleccione una tarjeta")
     .run(req);

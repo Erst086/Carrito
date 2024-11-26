@@ -1,0 +1,32 @@
+doctype html
+html
+  head
+    title Lista de Productos
+    link(rel="stylesheet" href="/css/CRUDstyles.css")
+    link(rel="stylesheet", href="/css/bootstrap.css")
+  body
+    a.btn.btn-primary(href='/admin/') Regresar
+    h1.text-center Lista de ventas
+    table
+      thead
+        tr
+          th ID Venta
+          th ID Usuario
+          th ID tarjeta
+          th Fecha 
+          th Total
+          th Ver productos
+      tbody
+        if ventas && ventas.length
+          each venta in ventas
+            tr
+              td= venta.id_venta
+              td= venta.id_usuario
+              td= venta.id_datopago 
+              td= new Date(venta.fecha_venta).toISOString().slice(0, 10).replace(/-/g, '/')
+              td= venta.total_venta
+              td
+                a(href=`/admin/ventas/detalleVenta/${venta.id_venta}` class="productos") Detalle
+        else
+          tr
+            td(colspan="6") No hay productos disponibles.
