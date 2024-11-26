@@ -1,0 +1,22 @@
+doctype html
+html(lang="es")
+    head
+        title Detalles de la Venta
+    body
+        h1 Detalles de la Venta
+        h2 Venta #= venta.id
+        p Fecha: #{venta.fecha}
+        p Total: #{venta.total}
+
+        table
+            thead
+                tr
+                    th Producto
+                    th Cantidad
+                    th Precio
+            tbody
+                each producto in productosVentas
+                    tr
+                        td= producto.nombre
+                        td= producto.cantidad
+                        td= producto.precio
