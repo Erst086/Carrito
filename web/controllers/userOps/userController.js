@@ -67,7 +67,7 @@ const finalizarCompraLink = async (req, res) => {
     //variables de sesion de usuarios
     const usuario = res.locals.usuario;
     try {
-        const { itemsCarrito} = req.body;
+        const carrito =  req.session.carrito || []; 
         const { id } = usuario; // Extraer el id del usuario
         // Obtén las opciones desde la base de datos
         const opcionesPago = await DatosPago.findAll({
@@ -77,7 +77,7 @@ const finalizarCompraLink = async (req, res) => {
         res.render("pago/pago", {
             csrf: req.csrfToken(), 
             opcionesPago,
-            itemsCarrito
+            carrito
         });
     } catch (error) {
         console.error('Error al obtener las opciones:', error);
@@ -88,6 +88,7 @@ const finalizarCompraLink = async (req, res) => {
 const finalizarCompra = async (req, res) => {
     // Variable de total de compra
     let totalCompra = 0;
+    
     // Variables de sesión de usuarios
     const usuario = res.locals.usuario;
     let valido = await validacionFormularioFC(req);
@@ -100,8 +101,8 @@ const finalizarCompra = async (req, res) => {
         });
     }
 
-    const { itemsCarrito } = req.body;
-    if (itemsCarrito.length == 0) {
+    const carrito =  req.session.carrito || []; 
+    if (carrito.length == 0) {
         return res.render("pago/pago", {
             csrf: req.csrfToken(),
             errores: [{ msg: 'No hay artículos en el carrito' }],
@@ -121,10 +122,10 @@ const finalizarCompra = async (req, res) => {
         });
 
         // Recorrer los artículos del carrito y crear los detalles de la venta
-        for (const objeto of itemsCarrito) {
+        for (const objeto of carrito) {
             const item = await ProductoVenta.create({
                 id_venta: venta.id_venta,
-                id_producto: objeto.id_producto,
+                id_producto: objeto.id,
                 cantidad: objeto.cantidad,
                 precio_unidad: objeto.precio,
                 subtotal: objeto.cantidad * objeto.precio,
@@ -133,7 +134,7 @@ const finalizarCompra = async (req, res) => {
             totalCompra += item.subtotal;
 
             // Actualizar el stock del producto
-            const producto = await Productos.findByPk(objeto.id_producto);
+            const producto = await Productos.findByPk(objeto.id);
             if (producto) {
                 await producto.update({
                     stock: producto.stock - objeto.cantidad,
@@ -156,21 +157,6 @@ const finalizarCompra = async (req, res) => {
     }
 };
 
-
-const agregarCarrito = async (req, res) => {
-    
-    const { id } = req.params;
-    try {
-        // Por ejemplo, buscar el producto por su ID y asociarlo al carrito del usuario:
-        const producto = await Productos.findByPk(id);
-        if (!producto) {
-          return res.status(404).send("Producto no encontrado");
-        }
-    }catch (error) {
-        console.error("Error al agregar producto al carrito:", error);
-        res.status(500).send("Error al agregar producto al carrito");
-    }
-};
 async function validacionFormularioFC(req) {
     await check("tarjeta")
     .notEmpty()
@@ -199,4 +185,4 @@ async function validacionFormularioRT(req) {
     let salida = validationResult(req);
     return salida;
 };
-export { inicio, registrarTarjeta, registrarTarjetaLink, finalizarCompra, finalizarCompraLink , agregarCarrito};
+export { inicio, registrarTarjeta, registrarTarjetaLink, finalizarCompra, finalizarCompraLink };

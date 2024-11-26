@@ -12,7 +12,7 @@ routerUser.post('/registrarTarjeta', rutaProteger, verificarRol([2]), registrarT
 routerUser.get('/finalizarCompra', rutaProteger, verificarRol([2]), finalizarCompraLink);                    //renderiza la pagina para terminar compra
 routerUser.post('/finalizarCompra', rutaProteger, verificarRol([2]), finalizarCompra);                    //Operacion de compra
 //carrito
-routerUser.post('/agregarCarrito', (req, res) => {
+routerUser.post('/agregarCarrito',rutaProteger, verificarRol([2]), (req, res) => {
     const { id, nombre, precio, img } = req.body;
     // Inicializa el carrito si no existe
     if (!req.session.carrito) {
@@ -32,13 +32,13 @@ routerUser.post('/agregarCarrito', (req, res) => {
 });
 
 // Vaciar el carrito
-routerUser.get('/vaciarCarrito', (req, res) => {
+routerUser.get('/vaciarCarrito',rutaProteger, verificarRol([2]), (req, res) => {
     req.session.carrito = [];
     res.redirect('/user/');
 });
 
 // Eliminar un producto específico
-routerUser.post('/eliminarProducto', (req, res) => {
+routerUser.post('/eliminarProducto',rutaProteger, verificarRol([2]), (req, res) => {
     const { id } = req.body;
     req.session.carrito = req.session.carrito.filter(item => item.id !== id);
     res.redirect('/user/');
