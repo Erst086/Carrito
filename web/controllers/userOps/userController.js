@@ -1,9 +1,11 @@
 //modelos
+import {check, validationResult} from 'express-validator';
 import DatosPago from "../../models/DatoPago.js";
 import Productos from "../../models/Producto.js";
 import ProductoVenta from "../../models/ProductosVenta.js";
 import Ventas from "../../models/Venta.js";
 import Usuarios from "../../models/Usuario.js";
+//import itemsCarrito from "../../public/js/carrito.js";
 //renderiza el formulario de inicio de sesion
 const inicio = async (req, res) => {
     try {
@@ -42,8 +44,9 @@ const registrarTarjeta = async (req, res) => {
     const { id } = usuario; // Extraer el id del usuario
     const datP = DatosPago.create({
         id_usuario: id,
-        numero_tarjeta: req.body.numeroTarjeta,
+        numero_tarjeta: req.body.numero_tarjeta,
         cvv: req.body.cvv,
+        fecha_vencimiento: req.body.caducidad,
         beneficiario: req.body.beneficiario,
     });
     await datP.save();
@@ -59,6 +62,7 @@ const finalizarCompraLink = async (req, res) => {
     //variables de sesion de usuarios
     const usuario = res.locals.usuario;
     try {
+        const { itemsCarrito} = req.body;
         const { id } = usuario; // Extraer el id del usuario
         // Obtén las opciones desde la base de datos
         const opcionesPago = await DatosPago.findAll({
@@ -68,6 +72,7 @@ const finalizarCompraLink = async (req, res) => {
         res.render("pago/pago", {
             csrf: req.csrfToken(), 
             opcionesPago,
+            itemsCarrito
         });
     } catch (error) {
         console.error('Error al obtener las opciones:', error);
@@ -90,7 +95,7 @@ const finalizarCompra = async (req, res) => {
         });
     }
 
-    const itemsCarrito = global.listaObjetos || [];
+    const {itemsCarrito} = req.body;
     if (itemsCarrito.length == 0) {
         return res.render("pago/pago", {
             csrf: req.csrfToken(),
@@ -135,7 +140,7 @@ const finalizarCompra = async (req, res) => {
         await venta.update({ total_venta: totalCompra });
 
         // Renderizar la confirmación
-        res.render("pago/confirmacionCompra", {
+        res.render("credenciales/confirmacion", {
             pagina: "Compra finalizada",
             mensaje: "Gracias por tu compra. Tu pedido ha sido procesado exitosamente.",
             csrf: req.csrfToken(),
@@ -171,9 +176,13 @@ async function validacionFormularioFC(req) {
     return salida;
 };
 async function validacionFormularioRT(req) {
-    await check("numeroTarjeta")
+    await check("numero_tarjeta")
     .notEmpty()
     .withMessage("El numero de la tarjeta no debe ser vacio")
+    .run(req);
+    await check("caducidad")
+    .notEmpty()
+    .withMessage("Caducidad invalida")
     .run(req);
     await check("cvv")
     .notEmpty()
