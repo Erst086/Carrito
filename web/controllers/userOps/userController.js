@@ -83,9 +83,9 @@ const finalizarCompraLink = async (req, res) => {
 };
 
 const finalizarCompra = async (req, res) => {
-    //variable de total de compra
+    // Variable de total de compra
     let totalCompra = 0;
-    //variables de sesión de usuarios
+    // Variables de sesión de usuarios
     const usuario = res.locals.usuario;
     let valido = await validacionFormularioFC(req);
     const { opcionPago } = req.body;
@@ -97,7 +97,7 @@ const finalizarCompra = async (req, res) => {
         });
     }
 
-    const {itemsCarrito} = req.body;
+    const { itemsCarrito } = req.body;
     if (itemsCarrito.length == 0) {
         return res.render("pago/pago", {
             csrf: req.csrfToken(),
@@ -114,7 +114,7 @@ const finalizarCompra = async (req, res) => {
         const { id } = usuario; // Extraer el id del usuario
         const venta = await Ventas.create({
             id_usuario: id,
-            id_datopago: opcionPago
+            id_datopago: opcionPago,
         });
 
         // Recorrer los artículos del carrito y crear los detalles de la venta
@@ -147,7 +147,6 @@ const finalizarCompra = async (req, res) => {
             mensaje: "Gracias por tu compra. Tu pedido ha sido procesado exitosamente.",
             csrf: req.csrfToken(),
         });
-
     } catch (error) {
         console.error('Error al procesar la compra:', error);
         res.status(500).send('Error interno del servidor');
