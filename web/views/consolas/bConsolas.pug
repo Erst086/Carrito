@@ -28,7 +28,13 @@ html(lang="es")
                   h5.card-title=`${con.nombre}`
                   p.card-text=`${con.precio.toFixed(2)}`
                   if userLoggedIn
-                    button.btn.btn-primary.agregar-carrito(data-id=`${con.id}` data-nombre=`${con.nombre}` data-precio=`${con.precio}` data-img='/img/ds.jpg') Añadir al carrito
+                    form(method="POST" action="/user/agregarCarrito")
+                      input(type="hidden" name="_csrf" value=csrf)
+                      input(type="hidden" name="id" value=`${con.id}`)
+                      input(type="hidden" name="nombre" value=`${con.nombre}`)
+                      input(type="hidden" name="precio" value=`${con.precio}`)
+                      input(type="hidden" name="img" value=`/img/caratulas/${con.id}.jpg`)
+                      button.btn.btn-primary(type="submit") Añadir al carrito
                   else
                     a.btn.btn-secondary(href='/logIn') Inicia sesión para comprar         
         else
@@ -46,7 +52,13 @@ html(lang="es")
                   h5.card-title=`${con.nombre}`
                   p.card-text=`${con.precio.toFixed(2)}`
                   if userLoggedIn
-                    button.btn.btn-primary.agregar-carrito(data-id=`${con.id}` data-nombre=`${con.nombre}` data-precio=`${con.precio}` data-img='/img/ds.jpg') Añadir al carrito
+                    form(method="POST" action="/user/agregarCarrito")
+                      input(type="hidden" name="_csrf" value=csrf)
+                      input(type="hidden" name="id" value=`${con.id}`)
+                      input(type="hidden" name="nombre" value=`${con.nombre}`)
+                      input(type="hidden" name="precio" value=`${con.precio}`)
+                      input(type="hidden" name="img" value=`/img/caratulas/${con.id}.jpg`)
+                      button.btn.btn-primary(type="submit") Añadir al carrito
                   else
                     a.btn.btn-secondary(href='/logIn') Inicia sesión para comprar
         else
@@ -64,7 +76,13 @@ html(lang="es")
                   h5.card-title=`${con.nombre}`
                   p.card-text=`${con.precio.toFixed(2)}`
                   if userLoggedIn
-                    button.btn.btn-primary.agregar-carrito(data-id=`${con.id}` data-nombre=`${con.nombre}` data-precio=`${con.precio}` data-img='/img/ds.jpg') Añadir al carrito
+                    form(method="POST" action="/user/agregarCarrito")
+                      input(type="hidden" name="_csrf" value=csrf)
+                      input(type="hidden" name="id" value=`${con.id}`)
+                      input(type="hidden" name="nombre" value=`${con.nombre}`)
+                      input(type="hidden" name="precio" value=`${con.precio}`)
+                      input(type="hidden" name="img" value=`/img/caratulas/${con.id}.jpg`)
+                      button.btn.btn-primary(type="submit") Añadir al carrito
                   else
                     a.btn.btn-secondary(href='/logIn') Inicia sesión para comprar
         else
