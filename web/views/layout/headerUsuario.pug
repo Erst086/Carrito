@@ -28,12 +28,12 @@ header.navbar.bg-body-tertiary
                 each producto in carrito
                   tr
                     td
-                      img(class="carrito-img" src=producto.img alt=`Imagen de ${producto.nombre}` width="50")
+                      img(class="carrito-img" src=`/img/caratulas/${producto.id}.jpg` alt=`Imagen de ${producto.nombre}` width="50")
                     td= producto.nombre
                     td= `$${producto.precio.toFixed(2)}`
                     td= producto.cantidad
                     td
-                      form(method="POST" action="/user/eliminarDelCarrito")
+                      form(method="POST" action="/user/eliminarProducto")
                         input(type="hidden" name="_csrf" value=csrf)
                         input(type="hidden" name="id" value=producto.id)
                         button.btn.btn-danger(type="submit") X

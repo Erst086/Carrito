@@ -29,10 +29,10 @@ html(lang="es")
             if userLoggedIn
               form(method="POST" action="/user/agregarCarrito")
                 input(type="hidden" name="_csrf" value=csrf)
-                input(type="hidden" name="id" value=`${pro.id}`)
+                input(type="hidden" name="id" value=`${pro.id_producto}`)
                 input(type="hidden" name="nombre" value=`${pro.nombre}`)
                 input(type="hidden" name="precio" value=`${pro.precio}`)
-                input(type="hidden" name="img" value=`/img/caratulas/${pro.id}.jpg`)
+                input(type="hidden" name="img" value=`/img/caratulas/${pro.id_producto}.jpg`)
                 button.btn.btn-primary(type="submit") Añadir al carrito
             else
               a.btn.btn-secondary(href='/logIn') Inicia sesión para comprar
