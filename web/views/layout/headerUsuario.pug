@@ -28,7 +28,7 @@ header.navbar.bg-body-tertiary
                 each producto in carrito
                   tr
                     td
-                      img(src=producto.img alt=`Imagen de ${producto.nombre}` width="50")
+                      img(class="carrito-img" src=producto.img alt=`Imagen de ${producto.nombre}` width="50")
                     td= producto.nombre
                     td= `$${producto.precio.toFixed(2)}`
                     td= producto.cantidad

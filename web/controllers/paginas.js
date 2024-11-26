@@ -8,6 +8,7 @@ const inicio = (req, res) => {
 }
 const getDatos = async (req, res) => {
     try {
+        const carrito =  req.session.carrito || []; 
         const { tipo } = req.params; // Obtener el tipo de consulta desde la URL
         let config = {};
 
@@ -71,6 +72,8 @@ const getDatos = async (req, res) => {
                     playstation,
                     xbox,
                     nintendo,
+                    carrito,
+                    csrf: req.csrfToken(), 
                 });
 
             default:
@@ -88,6 +91,8 @@ const getDatos = async (req, res) => {
         // Renderizar la vista configurada
         res.render(config.vista, {
             pagina: config.pagina,
+            carrito,
+            csrf: req.csrfToken(), 
             productos,
         });
     } catch (error) {
