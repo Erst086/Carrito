@@ -11,4 +11,7 @@ html(lang="es")
         h1.text-center=pagina
             div(class="row justify-content-center")
                 h3(class="fw-bold fs-6")=mensaje
-                <a class="btn btn-primary" href="/" role="button">Inicio</a>
+                if userLoggedIn
+                    <a class="btn btn-primary" href="/user/" role="button">Inicio</a>
+                else 
+                    <a class="btn btn-primary" href="/" role="button">Inicio</a>

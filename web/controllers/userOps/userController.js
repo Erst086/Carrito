@@ -28,6 +28,7 @@ const inicio = async (req, res) => {
 };
 
 const registrarTarjetaLink = async (req, res) => {
+    console.log(res.locals.usuario);
     res.render("pago/metodo", {
         csrf: req.csrfToken(), 
     });
@@ -44,16 +45,17 @@ const registrarTarjeta = async (req, res) => {
         });
     }
     const { id } = usuario; // Extraer el id del usuario
-
+    const {numero_tarjeta, cvv, caducidad, beneficiario} = req.body
+    console.log(numero_tarjeta, cvv, caducidad, beneficiario);
     // Crear el registro directamente sin llamar a save
-    await DatosPago.create({
+    const datoP = await DatosPago.create({
         id_usuario: id,
         numero_tarjeta: req.body.numero_tarjeta,
         cvv: req.body.cvv,
         fecha_vencimiento: req.body.caducidad,
         beneficiario: req.body.beneficiario,
     });
-
+    await datoP.save();
     // Mostrar mensaje de confirmación
     res.render("credenciales/confirmacion", {
         pagina: "Tarjeta registrada exitosamente",
