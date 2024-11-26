@@ -14,22 +14,20 @@ routerUser.post('/finalizarCompra', rutaProteger, verificarRol([2]), finalizarCo
 //carrito
 routerUser.post('/agregarCarrito', (req, res) => {
     const { id, nombre, precio, img } = req.body;
-    
     // Inicializa el carrito si no existe
     if (!req.session.carrito) {
         req.session.carrito = [];
     }
-
-    // Agrega el producto al carrito como una nueva entrada siempre
-    req.session.carrito.push({
-        id,
-        nombre,
-        precio: parseFloat(precio),
-        img,
-        cantidad: 1
-    });
-
-    console.log(req.session.carrito); // Opcional: para depuración
+    // Verifica si el producto ya está en el carrito
+    const productoIndex = req.session.carrito.findIndex(producto => producto.id === id);
+    if (productoIndex !== -1) {
+        // Incrementa la cantidad si el producto ya está en el carrito
+        req.session.carrito[productoIndex].cantidad++;
+    } else {
+        // Agrega el producto al carrito si no existe
+        req.session.carrito.push({ id, nombre, precio: parseFloat(precio), img, cantidad: 1 });
+        console.log(req.session.carrito)
+    }
     res.redirect('/user/');
 });
 
