@@ -6,6 +6,8 @@ html(lang="es")
         title INGRESAR
         link(rel="stylesheet", href="/css/bootstrap.css")
         link(rel="stylesheet", href="/css/style.css")
+        link(rel="stylesheet" href="/css/CRUDstyles.css")
+        link(rel="stylesheet", href="/css/bootstrap.css")
         script(src="/js/bootstrap.bundle.js")
         script(src="/js/pooper.min.js")
 a.btn-regresar(href='/user/') Regresar
@@ -15,16 +17,37 @@ if errores
       each er in errores
         h1(class="fw-bold fs-6")=er.msg
 .d-flex.justify-content-center.align-items-center.vh-100
-  form(style='width: 50rem; height: 29rem;' action="/user/finalizarCompra" method="POST" noValidate)
+  form(style='width: 50rem;' action="/user/finalizarCompra" method="POST" noValidate)
     .m-3.mb-2
         input(type="hidden" name="_csrf" value=csrf)
-        label.form-label.m-3(for='metodo') Ingresa método de pago
+        label.form-label.m-3(for='metodo') Seleccione una tarjeta
         select#metodo.form-control(name="metodo")
           each opcion in opcionesPago
             option(value=opcion.id_datopago) #{opcion.beneficiario}
         label.form-label.m-3(for='usuario') ¿No tienes una tarjeta registrada? 
         a.btn.btn-primary(href='/user/registrarTarjeta') Añade tarjeta
         label.form-label.m-3(for='text') Resumen de la compra
-        input#numero.form-control(type='text'  name="numero")
+        table
+          thead
+            tr
+              th Imagen
+              th Nombre
+              th Precio
+              th Cantidad
+              th Total
+          tbody
+            each producto in carrito
+              tr
+                td
+                  img(class="carrito-img" src=`/img/caratulas/${producto.id}.jpg` alt=`Imagen de ${producto.nombre}` width="50")
+                td= producto.nombre
+                td= `$${producto.precio.toFixed(2)}`
+                td= producto.cantidad
+                td= `$${(producto.precio * producto.cantidad).toFixed(2)}`
+          tfoot
+            tr
+              td(colspan="4") Total
+              td= `$${carrito.reduce((sum, producto) => sum + (producto.precio * producto.cantidad), 0).toFixed(2)}`    
         br
         button.btn.btn-primary(type='submit') Pagar
+        br

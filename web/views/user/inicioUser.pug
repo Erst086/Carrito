@@ -3,7 +3,7 @@ html(lang="es")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title PLAY STATION 
+        title INICIO
         link(rel="stylesheet", href="/css/bootstrap.css")
         link(rel="stylesheet", href="/css/style.css")
         script(src="/js/bootstrap.bundle.js")
@@ -47,7 +47,7 @@ html(lang="es")
                           input(type="hidden" name="id" value=`${pro.id_producto}`)
                           input(type="hidden" name="nombre" value=`${pro.nombre}`)
                           input(type="hidden" name="precio" value=`${pro.precio}`)
-                          input(type="hidden" name="img" value=`/img/caratulas/${pro.id_producto}.jpg`)
+                          input(type="hidden" name="img" value=`${pro.id_producto}.jpg`)
                           button.btn.btn-primary(type="submit") Añadir al carrito
 
   

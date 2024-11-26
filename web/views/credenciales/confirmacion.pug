@@ -7,11 +7,11 @@ html(lang="es")
         link(rel="stylesheet", href="/css/bootstrap.css")
         script(src="/js/bootstrap.bundle.js")
         script(src="/js/pooper.min.js")
+        link(rel="stylesheet", href="/css/style.css")
     body
-        h1.text-center=pagina
-            div(class="row justify-content-center")
-                h3(class="fw-bold fs-6")=mensaje
-                if userLoggedIn
-                    <a class="btn btn-primary" href="/user/" role="button">Inicio</a>
-                else 
-                    <a class="btn btn-primary" href="/" role="button">Inicio</a>
+    .d-flex.justify-content-center.align-items-center.vh-100
+      form(style='width: 21rem; height: 12rem;' action="/logIn" method="POST" noValidate)
+        .m-3.mb-2
+        h4.text-center La creación de tu cuenta se realizo con éxito
+        h3(class="fw-bold fs-6")=mensaje
+        <a class="btn btn-primary" href="/" role="button">Regresar al inicio</a>
