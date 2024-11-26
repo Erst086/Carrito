@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS productos(
     FOREIGN KEY(id_plataforma) REFERENCES plataformas(id_plataforma)
 ) DEFAULT CHARACTER SET UTF8MB4;
 
-CREATE TABLE IF NOT EXISTS productos_venta(
+CREATE TABLE IF NOT EXISTS productos_ventas(
     id_productventa           INT NOT NULL AUTO_INCREMENT,
     id_venta                  INT,
     id_producto               INT,
