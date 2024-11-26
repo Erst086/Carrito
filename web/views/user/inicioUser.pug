@@ -44,7 +44,7 @@ html(lang="es")
                         p.card-text=`${pro.precio.toFixed(2)}`
                         form(method="POST" action="/user/agregarCarrito")
                           input(type="hidden" name="_csrf" value=csrf)
-                          input(type="hidden" name="id" value=`${pro.id}`)
+                          input(type="hidden" name="id" value=`${pro.id_producto}`)
                           input(type="hidden" name="nombre" value=`${pro.nombre}`)
                           input(type="hidden" name="precio" value=`${pro.precio}`)
                           input(type="hidden" name="img" value=`${pro.id_producto}.jpg`)
