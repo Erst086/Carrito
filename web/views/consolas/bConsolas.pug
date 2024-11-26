@@ -23,17 +23,17 @@ html(lang="es")
           each con in playstation
             .col
               .card(style='width: 16rem; height: 24rem;')
-                img.card-img-top(src='/img/consolap.jpg' alt='...' style='width: 12rem; height: 12rem;')
+                img.card-img-top(src=`/img/caratulas/${con.id_producto}.jpg` alt='...' style='width: 12rem; height: 12rem;')
                 .card-body
                   h5.card-title=`${con.nombre}`
                   p.card-text=`${con.precio.toFixed(2)}`
                   if userLoggedIn
                     form(method="POST" action="/user/agregarCarrito")
                       input(type="hidden" name="_csrf" value=csrf)
-                      input(type="hidden" name="id" value=`${con.id}`)
+                      input(type="hidden" name="id" value=`${con.id_producto}`)
                       input(type="hidden" name="nombre" value=`${con.nombre}`)
                       input(type="hidden" name="precio" value=`${con.precio}`)
-                      input(type="hidden" name="img" value=`/img/caratulas/${con.id}.jpg`)
+                      input(type="hidden" name="img" value=`/img/caratulas/${con.id_producto}.jpg`)
                       button.btn.btn-primary(type="submit") Añadir al carrito
                   else
                     a.btn.btn-secondary(href='/logIn') Inicia sesión para comprar         
@@ -71,17 +71,17 @@ html(lang="es")
           each con in nintendo
             .col
               .card(style='width: 16rem; height: 24rem;')
-                img.card-img-top(src='/img/consolan.jpg' alt='...' style='width: 12rem; height: 12rem;')
+                img.card-img-top(src=`/img/caratulas/${con.id_producto}.jpg` alt='...' style='width: 12rem; height: 12rem;')
                 .card-body
                   h5.card-title=`${con.nombre}`
                   p.card-text=`${con.precio.toFixed(2)}`
                   if userLoggedIn
                     form(method="POST" action="/user/agregarCarrito")
                       input(type="hidden" name="_csrf" value=csrf)
-                      input(type="hidden" name="id" value=`${con.id}`)
+                      input(type="hidden" name="id" value=`${con.id_producto}`)
                       input(type="hidden" name="nombre" value=`${con.nombre}`)
                       input(type="hidden" name="precio" value=`${con.precio}`)
-                      input(type="hidden" name="img" value=`/img/caratulas/${con.id}.jpg`)
+                      input(type="hidden" name="img" value=`/img/caratulas/${con.id_producto}.jpg`)
                       button.btn.btn-primary(type="submit") Añadir al carrito
                   else
                     a.btn.btn-secondary(href='/logIn') Inicia sesión para comprar
