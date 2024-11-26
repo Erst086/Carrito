@@ -34,7 +34,7 @@ const registrarTarjetaLink = async (req, res) => {
 };
 
 const registrarTarjeta = async (req, res) => {
-    //variables de sesion de usuarios
+    // Variables de sesión de usuarios
     const usuario = res.locals.usuario;
     let valido = await validacionFormularioRT(req);
     if (!valido.isEmpty()) {
@@ -44,21 +44,24 @@ const registrarTarjeta = async (req, res) => {
         });
     }
     const { id } = usuario; // Extraer el id del usuario
-    const datP = DatosPago.create({
+
+    // Crear el registro directamente sin llamar a save
+    await DatosPago.create({
         id_usuario: id,
         numero_tarjeta: req.body.numero_tarjeta,
         cvv: req.body.cvv,
         fecha_vencimiento: req.body.caducidad,
         beneficiario: req.body.beneficiario,
     });
-    await datP.save();
-    //mostrar mensaje de confirmacions
+
+    // Mostrar mensaje de confirmación
     res.render("credenciales/confirmacion", {
         pagina: "Tarjeta registrada exitosamente",
         mensaje: "Ya puede hacer uso de su tarjeta para realizar compras",
         csrf: req.csrfToken(),
     });
 };
+
 
 const finalizarCompraLink = async (req, res) => {
     //variables de sesion de usuarios
