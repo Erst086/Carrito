@@ -1,21 +1,20 @@
-//modelos
-import {check, validationResult} from 'express-validator';
+import { check, validationResult } from 'express-validator';
 import DatosPago from "../../models/DatoPago.js";
 import Productos from "../../models/Producto.js";
 import ProductoVenta from "../../models/ProductosVenta.js";
 import Ventas from "../../models/Venta.js";
 import Usuarios from "../../models/Usuario.js";
-//import itemsCarrito from "../../public/js/carrito.js";
-//renderiza el formulario de inicio de sesion
+
+// Renderiza el formulario de inicio de sesión
 const inicio = async (req, res) => {
     try {
-        const carrito =  req.session.carrito || []; 
-        // Obtener solo 4 productos de la base de datos
+        const carrito = req.session.carrito || []; 
+        // Obtener solo 12 productos de la base de datos
         const produc = await Productos.findAll({
-            limit: 12, // Limita a 4 productos
+            limit: 12, // Limita a 12 productos
         });
 
-        // Renderizar la vista y pasar los productos
+        // Renderiza la vista y pasa los productos
         res.render('user/inicioUser', { 
             produc,
             carrito,
@@ -28,14 +27,11 @@ const inicio = async (req, res) => {
 };
 
 const registrarTarjetaLink = async (req, res) => {
-    console.log(res.locals.usuario);
     res.render("pago/metodo", {
         csrf: req.csrfToken(), 
     });
 };
-
 const registrarTarjeta = async (req, res) => {
-    // Variables de sesión de usuarios
     const usuario = res.locals.usuario;
     let valido = await validacionFormularioRT(req);
     if (!valido.isEmpty()) {
@@ -44,32 +40,42 @@ const registrarTarjeta = async (req, res) => {
             errores: valido.array(),
         });
     }
+
     const { id } = usuario; // Extraer el id del usuario
-    const {numero_tarjeta, cvv, caducidad, beneficiario} = req.body
-    console.log(numero_tarjeta, cvv, caducidad, beneficiario);
-    // Crear el registro directamente sin llamar a save
-    const datoP = await DatosPago.create({
-        id_usuario: id,
-        numero_tarjeta: req.body.numero_tarjeta,
-        cvv: req.body.cvv,
-        fecha_vencimiento: req.body.caducidad,
-        beneficiario: req.body.beneficiario,
-    });
-    await datoP.save();
-    // Mostrar mensaje de confirmación
-    res.render("credenciales/confirmacion", {
-        pagina: "Tarjeta registrada exitosamente",
-        mensaje: "Ya puede hacer uso de su tarjeta para realizar compras",
-        csrf: req.csrfToken(),
-    });
+
+    try {
+        // Convertir fecha de vencimiento MM/YY a YYYY-MM-01
+        const fechaVencimiento = req.body.caducidad; // Esperamos que la fecha venga en MM/YY
+        const [mes, anio] = fechaVencimiento.split("/"); // Separar mes y año
+        const fechaFormateada = `${"20" + anio}-${mes}-01`; // Convertirlo al formato YYYY-MM-01
+        
+        const datP = await DatosPago.create({
+            id_usuario: id,
+            numero_tarjeta: req.body.numero_tarjeta,
+            cvv: req.body.cvv,
+            fecha_vencimiento: fechaFormateada, // Usar la fecha formateada
+            beneficiario: req.body.beneficiario,
+        });
+
+        console.log('Tarjeta registrada:', datP); // Verifica si se crea el registro
+
+        res.render("credenciales/confirmacion", {
+            pagina: "Tarjeta registrada exitosamente",
+            mensaje: "Ya puede hacer uso de su tarjeta para realizar compras",
+            csrf: req.csrfToken(),
+        });
+    } catch (error) {
+        console.error('Error al registrar la tarjeta:', error);
+        res.status(500).send('Error al registrar la tarjeta');
+    }
 };
 
 
 const finalizarCompraLink = async (req, res) => {
-    //variables de sesion de usuarios
+    // Variables de sesión de usuarios
     const usuario = res.locals.usuario;
     try {
-        const carrito =  req.session.carrito || []; 
+        const carrito = req.session.carrito || []; 
         const { id } = usuario; // Extraer el id del usuario
         // Obtén las opciones desde la base de datos
         const opcionesPago = await DatosPago.findAll({
@@ -103,7 +109,7 @@ const finalizarCompra = async (req, res) => {
         });
     }
 
-    const carrito =  req.session.carrito || []; 
+    const carrito = req.session.carrito || []; 
     if (carrito.length == 0) {
         return res.render("pago/pago", {
             csrf: req.csrfToken(),
@@ -147,7 +153,7 @@ const finalizarCompra = async (req, res) => {
         // Actualizar el total de la venta
         await venta.update({ total_venta: totalCompra });
 
-        // Renderizar la confirmación
+        // Renderiza la confirmación
         res.render("credenciales/confirmacion", {
             pagina: "Compra finalizada",
             mensaje: "Gracias por tu compra. Tu pedido ha sido procesado exitosamente.",
@@ -167,6 +173,7 @@ async function validacionFormularioFC(req) {
     let salida = validationResult(req);
     return salida;
 };
+
 async function validacionFormularioRT(req) {
     await check("numero_tarjeta")
     .notEmpty()
@@ -187,4 +194,5 @@ async function validacionFormularioRT(req) {
     let salida = validationResult(req);
     return salida;
 };
+
 export { inicio, registrarTarjeta, registrarTarjetaLink, finalizarCompra, finalizarCompraLink };

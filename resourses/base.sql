@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS usuarios(
     FOREIGN KEY(id_rol) REFERENCES roles(id_rol)
 ) DEFAULT CHARACTER SET UTF8MB4;
 
-CREATE TABLE IF NOT EXISTS datos_pago(
+CREATE TABLE IF NOT EXISTS datos_pagos(
     id_datopago               INT NOT NULL AUTO_INCREMENT,
     id_usuario                INT NOT NULL,
     numero_tarjeta            VARCHAR(16) NOT NULL,

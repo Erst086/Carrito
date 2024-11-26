@@ -24,17 +24,19 @@ const DatosPago = db.define('datos_pago', {
         allowNull: false,
     },
     fecha_vencimiento: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY, // Asegúrate de usar DATEONLY para evitar almacenar la hora
         allowNull: false,
     },
     beneficiario: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(250),
         allowNull: false,
     },
 }, {
+    tableName: 'datos_pagos',
     timestamps: false,
 });
 
+// Definir las relaciones
 Usuarios.hasMany(DatosPago, { foreignKey: 'id_usuario' });
 DatosPago.belongsTo(Usuarios, { foreignKey: 'id_usuario' });
 
