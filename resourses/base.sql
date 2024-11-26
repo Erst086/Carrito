@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS ventas(
     total_venta               DECIMAL(10, 2),
     PRIMARY KEY(id_venta),
     FOREIGN KEY(id_usuario) REFERENCES usuarios(id_usuario),
-    FOREIGN KEY(id_datopago) REFERENCES datos_pago(id_datopago)
+    FOREIGN KEY(id_datopago) REFERENCES datos_pagos(id_datopago)
 ) DEFAULT CHARACTER SET UTF8MB4;
 
 CREATE TABLE IF NOT EXISTS categorias(
