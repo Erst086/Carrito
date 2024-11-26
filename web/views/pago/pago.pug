@@ -25,6 +25,22 @@ if errores
         label.form-label.m-3(for='usuario') ¿No tienes una tarjeta registrada? 
         a.btn.btn-primary(href='/user/registrarTarjeta') Añade tarjeta
         label.form-label.m-3(for='text') Resumen de la compra
-        input#numero.form-control(type='text'  name="numero")
-        br
-        button.btn.btn-primary(type='submit') Pagar
+        table
+          thead
+            tr
+              th Imagen
+              th Nombre
+              th Precio
+              th Cantidad
+              th
+          tbody
+            each producto in carrito
+              tr
+                td
+                  img(class="carrito-img" src=`/img/caratulas/${producto.id}.jpg` alt=`Imagen de ${producto.nombre}` width="50")
+                td= producto.nombre
+                td= `$${producto.precio.toFixed(2)}`
+                td= producto.cantidad
+                td
+            br
+            button.btn.btn-primary(type='submit') Pagar

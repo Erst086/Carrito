@@ -39,16 +39,15 @@ html(lang="es")
                 .card(style='width: 14rem; height: 24rem;')
                     h1
                     img.card-img-top(src=`/img/caratulas/${pro.id_producto}.jpg` alt='...' style='width: 10rem; height: 12rem;')
-                    img.card-img-top(src=`/img/caratulas/${pro.id_producto}.jpg` alt='...' style='width: 10rem; height: 12rem;')
                     .card-body
                         h5.card-title=`${pro.nombre}`
                         p.card-text=`${pro.precio.toFixed(2)}`
                         form(method="POST" action="/user/agregarCarrito")
                           input(type="hidden" name="_csrf" value=csrf)
-                          input(type="hidden" name="id" value=`${pro.id_producto}`)
+                          input(type="hidden" name="id" value=`${pro.id}`)
                           input(type="hidden" name="nombre" value=`${pro.nombre}`)
                           input(type="hidden" name="precio" value=`${pro.precio}`)
-                          input(type="hidden" name="img" value=`/img/caratulas/${pro.id_producto}.jpg`)
+                          input(type="hidden" name="img" value=`${pro.id_producto}.jpg`)
                           button.btn.btn-primary(type="submit") Añadir al carrito
 
   
